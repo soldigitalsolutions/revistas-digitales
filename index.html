@@ -13,8 +13,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Sol Catálogos">
     
-    <!-- Ícono para iOS / Apple Touch con Sol y Revista -->
-    <link rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='120' fill='%23f97316'/><path d='M256 90 A 80 80 0 0 1 256 250 A 80 80 0 0 1 256 90' fill='%23fde047'/><path d='M140 320 Q 256 280 372 320 L 372 430 Q 256 390 140 430 Z' fill='%23ffffff' opacity='0.95'/><path d='M256 295 L 256 410' stroke='%23f97316' stroke-width='6'/></svg>">
+    <!-- Ícono SVG Combinado Corregido (Sol con Rayos + Libro Abierto Correcto) -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='120' fill='%23f97316'/><circle cx='256' cy='200' r='60' fill='%23fde047'/><path d='M256 100 L256 125 M256 275 L256 300 M156 200 L131 200 M381 200 L356 200 M185 129 L167 111 M345 289 L327 271 M185 271 L167 289 M345 111 L327 129' stroke='%23fef08a' stroke-width='16' stroke-linecap='round'/><path d='M140 330 Q 256 290 372 330 L 372 430 Q 256 390 140 430 Z' fill='%23ffffff'/><path d='M256 310 L 256 410' stroke='%23f97316' stroke-width='6'/></svg>">
 
     <!-- Librerías de CSS y JS Externas -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -62,7 +62,6 @@
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Animación combinada: Giro continuo de 360° más respiración y pulso de resplandor */
         @keyframes sun-spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -96,10 +95,10 @@
 </head>
 <body class="min-h-screen flex flex-col sunset-glow">
 
-    <header class="bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 text-white py-12 px-4 shadow-lg relative overflow-hidden">
+    <header class="bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 text-white py-14 px-4 shadow-lg relative overflow-hidden">
         <div class="container mx-auto text-center flex flex-col items-center justify-center">
             
-            <div class="w-28 h-28 md:w-36 md:h-36 flex items-center justify-center animate-sun-spin mb-3">
+            <div class="w-28 h-28 md:w-36 md:h-36 flex items-center justify-center animate-sun-spin mb-4">
                 <div class="w-full h-full animate-sun-pulse flex items-center justify-center">
                     <svg viewBox="0 0 100 100" class="w-full h-full fill-amber-100">
                         <circle cx="50" cy="50" r="24" class="fill-yellow-300"></circle>
@@ -110,23 +109,6 @@
             </div>
             <h1 class="text-5xl md:text-7xl font-bold tracking-tight brand-title text-white">Sol</h1>
             <span class="text-xs font-bold tracking-[0.4em] uppercase mt-3 block text-orange-50">Venta por Catálogo</span>
-
-            <!-- Botón Promocional PWA para Instalar App -->
-            <div id="pwaInstallBanner" class="hidden mt-6 bg-white/20 backdrop-blur-md border border-white/40 p-3 rounded-2xl max-w-sm w-full flex items-center justify-between shadow-lg">
-                <div class="text-left flex items-center gap-2.5">
-                    <div class="w-10 h-10 bg-amber-300 text-orange-600 rounded-xl flex items-center justify-center text-lg font-bold shadow-sm relative overflow-hidden">
-                        <i class="fas fa-book-open text-orange-600 text-xs absolute bottom-1 right-1 opacity-80"></i>
-                        <i class="fas fa-sun text-orange-600 text-base mb-1"></i>
-                    </div>
-                    <div>
-                        <p class="text-xs font-extrabold text-white">Instalar App Sol Catálogos</p>
-                        <p class="text-[10px] text-orange-100">Acceso rápido en tu celular</p>
-                    </div>
-                </div>
-                <button id="pwaInstallBtn" class="bg-white text-orange-600 font-extrabold text-xs px-3.5 py-2 rounded-xl shadow hover:bg-orange-50 transition active:scale-95">
-                    Instalar
-                </button>
-            </div>
         </div>
     </header>
 
@@ -151,6 +133,25 @@
             <p class="text-lg font-medium">No hay revistas disponibles en este momento.</p>
         </div>
     </main>
+
+    <!-- Banner PWA Reposicionado Abajo con el Hermoso Color Degradado Naranja de la Marca -->
+    <section class="container mx-auto px-4 pb-12 max-w-xl">
+        <div id="pwaInstallBanner" class="hidden bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 p-5 rounded-3xl shadow-xl flex items-center justify-between border border-white/40 transform transition-all">
+            <div class="text-left flex items-center gap-3">
+                <div class="w-12 h-12 bg-white text-orange-600 rounded-2xl flex items-center justify-center text-xl font-bold shadow relative overflow-hidden">
+                    <i class="fas fa-book-open text-xs absolute bottom-1.5 right-1.5 opacity-80 text-orange-500"></i>
+                    <i class="fas fa-sun text-orange-500 text-lg mb-1"></i>
+                </div>
+                <div>
+                    <p class="text-xs md:text-sm font-extrabold text-white">Instalar App Sol Catálogos</p>
+                    <p class="text-[10px] md:text-xs text-orange-100 font-medium">Acceso rápido en tu celular sin ocupar espacio</p>
+                </div>
+            </div>
+            <button id="pwaInstallBtn" class="bg-white text-orange-600 font-extrabold text-xs px-4 py-2.5 rounded-2xl shadow-md hover:bg-orange-50 transition active:scale-95 shrink-0">
+                Instalar App
+            </button>
+        </div>
+    </section>
 
     <footer class="bg-white border-t border-orange-100 py-12 text-center">
         <div class="brand-title text-3xl text-orange-400 font-bold mb-2">Sol</div>
@@ -487,7 +488,6 @@
         let magazines = defaultMagazines;
         let settings = defaultSettings;
         let deleteTargetId = null;
-        let deferredPrompt = null;
 
         const monthOrder = {
             'ENE': 0, 'FEB': 1, 'MAR': 2, 'ABR': 3, 'MAY': 4, 'JUN': 5,
@@ -876,7 +876,6 @@
             try {
                 let docClone = document.documentElement.cloneNode(true);
                 
-                // Limpieza estricta de avisos y notificaciones antes de guardar
                 docClone.querySelectorAll('.toast-notification').forEach(el => el.remove());
 
                 const cloneAdmin = docClone.querySelector('#adminPanel');
@@ -889,7 +888,6 @@
                 if (cloneHelp) cloneHelp.className = "hidden fixed bottom-24 right-4 sm:right-6 w-[92%] sm:w-[380px] max-h-[80vh] bg-white border border-orange-100 rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden transition-all duration-300";
 
                 let htmlContent = "<!DOCTYPE html>\n<html lang=\"es\">\n" + docClone.outerHTML + "\n</html>";
-
                 htmlContent = htmlContent.replace(/<html lang="es">\s*<html lang="es">/g, '<html lang="es">');
 
                 const magazinesJson = JSON.stringify(magazines, null, 12);
@@ -912,7 +910,6 @@
             }
         }
 
-        // Eventos y Lógica para Instalación PWA en Celulares
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
@@ -935,7 +932,6 @@
             });
         }
 
-        // Registro del Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./sw.js')
