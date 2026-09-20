@@ -1,24 +1,24 @@
 {
-  "name": "Sol - Venta por Catálogo",
-  "short_name": "Sol Catálogos",
-  "description": "Revistas y catálogos digitales de venta directa en Colombia.",
-  "start_url": "./index.html",
-  "display": "standalone",
-  "background_color": "#fffbf7",
-  "theme_color": "#f97316",
-  "orientation": "portrait",
-  "icons": [
-    {
-      "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='45' fill='%23f97316'/><circle cx='96' cy='65' r='22' fill='%23fde047'/><path d='M96 32 L96 40 M96 90 L96 98 M63 65 L55 65 M137 65 L129 65 M73 42 L67 36 M125 88 L119 82 M73 88 L67 94 M125 42 L119 48' stroke='%23fef08a' stroke-width='5' stroke-linecap='round'/><path d='M48 122 C 68 112 88 118 96 122 C 104 118 124 112 144 122 L 144 152 C 124 142 104 148 96 152 C 88 148 68 142 48 152 Z' fill='%23ffffff'/><path d='M96 122 L 96 152' stroke='%23f97316' stroke-width='2.5'/></svg>",
-      "sizes": "192x192",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='120' fill='%23f97316'/><circle cx='256' cy='175' r='58' fill='%23fde047'/><path d='M256 85 L256 105 M256 245 L256 265 M166 175 L146 175 M366 175 L346 175 M193 112 L179 98 M333 252 L319 238 M193 238 L179 252 M333 112 L319 126' stroke='%23fef08a' stroke-width='14' stroke-linecap='round'/><path d='M130 325 C 180 295 230 315 256 325 C 282 315 332 295 382 325 L 382 410 C 332 380 282 400 256 410 C 230 400 180 380 130 410 Z' fill='%23ffffff'/><path d='M256 325 L 256 410' stroke='%23f97316' stroke-width='6'/></svg>",
-      "sizes": "512x512",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    }
-  ]
+"name": "Sol - Venta por Catálogo",
+"short_name": "Sol Catálogos",
+"description": "Revistas y catálogos digitales de venta directa en Colombia.",
+"start_url": "./index.html",
+"display": "standalone",
+"background_color": "#fffbf7",
+"theme_color": "#f97316",
+"orientation": "portrait",
+"icons": [
+{
+"src": "data:image/svg+xml;utf8,",
+"sizes": "192x192",
+"type": "image/svg+xml",
+"purpose": "any maskable"
+},
+{
+"src": "data:image/svg+xml;utf8,",
+"sizes": "512x512",
+"type": "image/svg+xml",
+"purpose": "any maskable"
+}
+]
 }
