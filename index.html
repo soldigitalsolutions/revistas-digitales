@@ -217,12 +217,13 @@
         </div>
     </footer>
 
-    <button id="helpFloatingBtn" class="fixed bottom-3 right-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-full shadow-2xl z-40 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 text-xs border border-amber-300/40" title="Centro de Ayuda">
+    <!-- Botón Flotante de Ayuda ajustado para no tapar la firma de EPamar -->
+    <button id="helpFloatingBtn" class="fixed bottom-16 sm:bottom-6 right-3.5 sm:right-6 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-full shadow-2xl z-40 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 text-xs border border-amber-300/40" title="Centro de Ayuda">
         <i class="fas fa-sun text-yellow-200 text-sm drop-shadow-sm"></i>
         <span class="font-bold tracking-wide">¿Ayuda?</span>
     </button>
 
-    <div id="helpModalWindow" class="hidden fixed bottom-16 right-3 left-3 sm:left-auto sm:right-5 sm:w-[380px] max-h-[80vh] bg-white border border-orange-100 rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden transition-all duration-300">
+    <div id="helpModalWindow" class="hidden fixed bottom-28 sm:bottom-20 right-3 left-3 sm:left-auto sm:right-6 sm:w-[380px] max-h-[75vh] bg-white border border-orange-100 rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden transition-all duration-300">
         <div class="bg-gradient-to-r from-amber-400 to-orange-500 p-4 text-white flex justify-between items-center shadow-md">
             <div class="flex items-center gap-2.5">
                 <div class="bg-white/20 p-2 rounded-xl flex items-center justify-center">
