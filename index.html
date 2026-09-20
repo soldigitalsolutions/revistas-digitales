@@ -9,8 +9,10 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Sol - Venta por Catálogo">
     <meta property="og:description" content="Catálogos digitales interactivos y actualizados de venta directa en Colombia. Haz tu pedido fácil y rápido por WhatsApp.">
-    <!-- Imagen oficial del Logo Sol para vistas previas en chats -->
+    <!-- Imagen oficial del Logo Sol para vistas previas en chats (Subir 'sol-logo.png' a la raíz de tu GitHub) -->
     <meta property="og:image" content="https://soldigitalsolutions.github.io/revistas-digitales/sol-logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://soldigitalsolutions.github.io/revistas-digitales/">
     <meta property="og:site_name" content="Sol Catálogos">
 
@@ -113,9 +115,10 @@
 </head>
 <body class="min-h-screen flex flex-col sunset-glow">
 
-    <header class="bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 text-white py-10 px-4 shadow-lg relative overflow-hidden">
+    <!-- Encabezado Principal Sol - Sol animado original de la aplicación -->
+    <header class="bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 text-white py-12 px-4 shadow-lg relative overflow-hidden">
         <div class="container mx-auto text-center flex flex-col items-center justify-center relative z-10">
-            <div class="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center animate-sun-pulse mb-2">
+            <div class="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center animate-sun-pulse mb-3">
                 <div class="w-full h-full animate-sun-spin flex items-center justify-center">
                     <svg viewBox="0 0 100 100" class="w-full h-full fill-amber-100">
                         <circle cx="50" cy="50" r="24" class="fill-yellow-300"></circle>
@@ -126,13 +129,13 @@
             </div>
 
             <h1 class="text-5xl md:text-7xl font-bold tracking-tight brand-title text-white drop-shadow-sm">Sol</h1>
-            <span class="text-xs font-bold tracking-[0.4em] uppercase mt-2 block text-orange-50">Venta por Catálogo</span>
+            <span class="text-xs font-bold tracking-[0.4em] uppercase mt-2.5 block text-orange-50">Venta por Catálogo</span>
         </div>
     </header>
 
-    <section class="container mx-auto px-4 py-6 max-w-4xl">
-        <div class="bg-white/80 border border-orange-100 rounded-3xl p-5 shadow-sm backdrop-blur-sm">
-            <h3 class="font-bold text-orange-900 mb-3 text-center text-xs md:text-base">¿Cómo hacer tu pedido?</h3>
+    <section class="container mx-auto px-4 py-8 max-w-4xl">
+        <div class="bg-white/80 border border-orange-100 rounded-3xl p-6 shadow-sm backdrop-blur-sm">
+            <h3 class="font-bold text-orange-900 mb-4 text-center text-sm md:text-base">¿Cómo hacer tu pedido?</h3>
             <div class="grid grid-cols-3 gap-2 text-center text-[10px] md:text-xs text-slate-600">
                 <div class="p-2"><i class="fas fa-mouse-pointer block text-orange-500 mb-1.5 text-base md:text-lg"></i> Elige catálogo</div>
                 <div class="p-2"><i class="fas fa-camera block text-orange-500 mb-1.5 text-base md:text-lg"></i> Toma captura</div>
@@ -199,7 +202,7 @@
                 </button>
             </div>
 
-            <!-- Botón de administración discreto, aislado al final -->
+            <!-- Botón de administración discreto y aislado -->
             <div class="mt-5">
                 <button id="toggleAdminBtn" class="text-[11px] text-slate-400 hover:text-slate-600 transition-colors font-normal bg-transparent px-3 py-1 rounded-full border border-transparent hover:border-slate-200 inline-flex items-center gap-1.5 opacity-60 hover:opacity-100">
                     <i class="fas fa-lock text-[10px]"></i> Gestionar Kiosco
@@ -219,7 +222,7 @@
         </div>
     </footer>
 
-    <!-- Botón Flotante: Pastilla '¿Ayuda?' compacta en Móviles, Extendido en Pantallas Mediana/PC -->
+    <!-- Botón Flotante de Ayuda -->
     <button id="helpFloatingBtn" class="fixed bottom-3 right-3 sm:bottom-4 sm:right-5 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-3.5 py-2 sm:px-4.5 sm:py-3 rounded-full shadow-2xl z-40 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 text-xs sm:text-sm border border-amber-300/40 group" title="Centro de Ayuda">
         <i class="fas fa-sun text-yellow-200 text-sm sm:text-base drop-shadow-sm group-hover:rotate-45 transition-transform duration-300"></i>
         <span class="font-extrabold tracking-wide sm:hidden">¿Ayuda?</span>
@@ -327,6 +330,7 @@
         </div>
     </div>
 
+    <!-- Modal Clave Administrador -->
     <div id="passwordModal" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-[90] flex items-center justify-center p-4 opacity-0">
         <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 max-w-sm w-full shadow-2xl text-center text-white">
             <div class="w-12 h-12 bg-orange-500/20 text-orange-400 rounded-2xl flex items-center justify-center text-xl mx-auto mb-3">
@@ -342,6 +346,7 @@
         </div>
     </div>
 
+    <!-- Panel de Administración -->
     <div id="adminPanel" class="hidden fixed top-0 left-0 w-full h-full bg-slate-950/80 backdrop-blur-sm text-white z-50 flex items-center justify-center p-2 opacity-0">
         <div class="bg-slate-900 rounded-3xl shadow-2xl w-full max-w-6xl max-h-[95vh] flex flex-col overflow-hidden border border-slate-800">
             <div class="flex justify-between items-center p-5 md:p-6 border-b border-slate-800 bg-slate-950/50">
@@ -450,6 +455,7 @@
         </div>
     </div>
 
+    <!-- Modal Confirmación Eliminación -->
     <div id="confirmModal" class="hidden fixed inset-0 bg-slate-950/85 backdrop-blur-sm z-[80] flex items-center justify-center p-4 transition-opacity duration-200 opacity-0">
         <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 max-w-sm w-full shadow-2xl text-center text-white">
             <h4 class="text-lg font-bold mb-2">¿Eliminar catálogo?</h4>
@@ -504,10 +510,8 @@
             }
         }
 
-        /* Función nativa optimizada para compartir el Kiosco Sol en WhatsApp / Redes */
         async function shareKiosco() {
             const isApp = isStandaloneApp();
-            // URL limpia sin /index.html al final
             const cleanUrl = window.location.origin + window.location.pathname.replace(/index\.html$/, '');
             
             const shareData = {
