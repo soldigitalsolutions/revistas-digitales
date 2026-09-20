@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sol - Venta por Catálogo</title>
 
-    <!-- Metadatos de la PWA -->
     <meta name="theme-color" content="#f97316">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Sol Catálogos">
     <link rel="manifest" href="./manifest.json">
 
-    <!-- Frameworks y Librerías -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js" crossorigin="anonymous"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -29,7 +27,6 @@
         .brand-title { font-family: 'Playfair Display', serif; }
         .sunset-glow { background: radial-gradient(circle at 50% -20%, rgba(251, 146, 60, 0.08) 0%, rgba(255, 251, 247, 0) 70%); }
         
-        /* Proporciones de las revistas */
         .magazine-card { 
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
             height: 360px; 
@@ -65,7 +62,6 @@
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Animación original del Sol: rotación fluida y respiración luminosa */
         @keyframes sun-spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -76,22 +72,27 @@
                 filter: drop-shadow(0 0 16px rgba(254, 240, 138, 0.85)) drop-shadow(0 0 8px rgba(251, 146, 60, 0.5)); 
             }
             50% { 
-                transform: scale(1.12); 
-                filter: drop-shadow(0 0 30px rgba(254, 240, 138, 1)) drop-shadow(0 0 18px rgba(249, 115, 22, 0.85)); 
+                transform: scale(1.08); 
+                filter: drop-shadow(0 0 24px rgba(254, 240, 138, 1)) drop-shadow(0 0 14px rgba(249, 115, 22, 0.8)); 
             }
         }
-        .animate-sun-spin { animation: sun-spin 12s linear infinite; }
-        .animate-sun-pulse { animation: sun-pulse 3.2s ease-in-out infinite; }
+        .animate-sun-spin { animation: sun-spin 14s linear infinite; }
+        .animate-sun-pulse { animation: sun-pulse 3.8s ease-in-out infinite; }
+
+        @keyframes banner-breath-gentle {
+            0%, 100% { transform: scale(1); box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.22); }
+            50% { transform: scale(1.012); box-shadow: 0 14px 30px -5px rgba(249, 115, 22, 0.32); }
+        }
+        .animate-banner-gentle {
+            animation: banner-breath-gentle 4.5s ease-in-out infinite;
+        }
 
         @keyframes badge-pulse {
             0%, 100% { transform: scale(1); opacity: 0.95; }
             50% { transform: scale(1.04); opacity: 1; }
         }
-        .animate-badge {
-            animation: badge-pulse 2s ease-in-out infinite;
-        }
+        .animate-badge { animation: badge-pulse 2s ease-in-out infinite; }
 
-        /* Si la app ya está instalada, el banner nunca se muestra por CSS */
         @media all and (display-mode: standalone) {
             #pwaInstallBanner { display: none !important; }
         }
@@ -99,11 +100,8 @@
 </head>
 <body class="min-h-screen flex flex-col sunset-glow">
 
-    <!-- Encabezado Original Limpio (Sol animado exclusivo de la marca) -->
     <header class="bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 text-white py-12 px-4 shadow-lg relative overflow-hidden">
         <div class="container mx-auto text-center flex flex-col items-center justify-center relative z-10">
-            
-            <!-- Sol Protagónico con sus rayos simétricos originales -->
             <div class="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center animate-sun-pulse mb-3">
                 <div class="w-full h-full animate-sun-spin flex items-center justify-center">
                     <svg viewBox="0 0 100 100" class="w-full h-full fill-amber-100">
@@ -119,7 +117,6 @@
         </div>
     </header>
 
-    <!-- Instrucciones de 3 Pasos -->
     <section class="container mx-auto px-4 py-8 max-w-4xl">
         <div class="bg-white/80 border border-orange-100 rounded-3xl p-6 shadow-sm backdrop-blur-sm">
             <h3 class="font-bold text-orange-900 mb-4 text-center text-sm md:text-base">¿Cómo hacer tu pedido?</h3>
@@ -131,8 +128,7 @@
         </div>
     </section>
 
-    <!-- Estantería de Revistas -->
-    <main class="flex-grow container mx-auto px-4 pb-14 max-w-7xl">
+    <main class="flex-grow container mx-auto px-4 pb-10 max-w-7xl">
         <div id="magazineGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
             <!-- Inyectado dinámicamente -->
         </div>
@@ -143,42 +139,75 @@
         </div>
     </main>
 
-    <!-- Pie de Página Limpio -->
-    <footer class="bg-white border-t border-orange-100 py-12 text-center">
-        <div class="brand-title text-3xl text-orange-400 font-bold mb-1">Sol</div>
-        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8 italic">Trayectoria y confianza desde 2004</p>
-        
-        <div class="inline-block p-6 rounded-3xl bg-slate-50 border border-slate-100 shadow-sm w-11/12 md:w-auto max-w-md">
-            <h5 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">Medios de Pago</h5>
-            <div class="flex justify-center gap-6 text-2xl text-slate-400 mb-4">
-                <i class="fas fa-mobile-screen-button" title="Nequi / Llave"></i>
-                <i class="fas fa-key" title="Llaves / Bre-B"></i>
-                <i class="fas fa-hand-holding-usd" title="Efectivo"></i>
-                <i class="fas fa-handshake" title="Acuerdos con Asesor"></i>
+    <section id="pwaInstallBanner" class="container mx-auto px-4 pb-10 max-w-xl">
+        <div class="bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 rounded-2xl p-3.5 text-white shadow-md flex items-center justify-between gap-3 border border-amber-300/30 animate-banner-gentle">
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-white/20 flex flex-col items-center justify-center shrink-0 p-1 shadow-inner">
+                    <svg viewBox="0 0 24 24" class="w-4 h-4 fill-amber-200">
+                        <circle cx="12" cy="12" r="5" />
+                        <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41m14.14-14.14l-1.41 1.41" stroke="#fef08a" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <svg viewBox="0 0 24 24" class="w-5 h-5 fill-white mt-0.5">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h4 class="font-bold text-xs sm:text-sm leading-tight">Instala Sol Catálogos</h4>
+                    <p class="text-[10px] text-orange-100">Acceso directo rápido en tu celular.</p>
+                </div>
             </div>
-            <p id="paymentTextDisplay" class="text-xs text-slate-600 font-medium">Nequi / Llave: 300 591 9059</p>
-            <p id="paymentFlexDisplay" class="text-xs text-slate-500 mt-1">Pagos y envíos flexibles acordados con asesor.</p>
+            <div class="flex items-center gap-2">
+                <button id="pwaTriggerBtn" class="bg-white hover:bg-orange-50 text-orange-600 font-extrabold px-3 py-1.5 rounded-xl text-xs shadow transition whitespace-nowrap">
+                    Instalar
+                </button>
+                <button id="closeInstallBannerBtn" class="text-orange-200 hover:text-white px-1 py-1 text-xs" title="Cerrar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white border-t border-orange-100 pt-12 pb-0">
+        <div class="brand-title text-4xl sm:text-5xl text-orange-500 font-bold mb-1 text-center">Sol</div>
+        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8 text-center italic">Trayectoria y confianza desde 2004</p>
+        
+        <div class="text-center pb-10">
+            <div class="inline-block p-6 rounded-3xl bg-slate-50 border border-slate-100 shadow-sm w-11/12 md:w-auto max-w-md">
+                <h5 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">Medios de Pago</h5>
+                <div class="flex justify-center gap-6 text-2xl text-slate-400 mb-4">
+                    <i class="fas fa-mobile-screen-button" title="Nequi / Llave"></i>
+                    <i class="fas fa-key" title="Llaves / Bre-B"></i>
+                    <i class="fas fa-hand-holding-usd" title="Efectivo"></i>
+                    <i class="fas fa-handshake" title="Acuerdos con Asesor"></i>
+                </div>
+                <p id="paymentTextDisplay" class="text-xs text-slate-600 font-medium">Nequi / Llave: 300 591 9059</p>
+                <p id="paymentFlexDisplay" class="text-xs text-slate-500 mt-1">Pagos y envíos flexibles acordados con asesor.</p>
+            </div>
+
+            <div class="mt-8">
+                <button id="toggleAdminBtn" class="text-xs text-slate-400 hover:text-orange-500 transition-colors font-medium bg-slate-100 px-4 py-2 rounded-full border border-slate-200/60 inline-flex items-center gap-2">
+                    <i class="fas fa-lock"></i> Gestionar Kiosco
+                </button>
+            </div>
         </div>
 
-        <div class="mt-8">
-            <button id="toggleAdminBtn" class="text-xs text-slate-400 hover:text-orange-500 transition-colors font-medium bg-slate-100 px-4 py-2 rounded-full border border-slate-200/60 inline-flex items-center gap-2">
-                <i class="fas fa-lock"></i> Gestionar Kiosco
-            </button>
-        </div>
-
-        <div class="mt-10 pt-6 border-t border-orange-50 max-w-xs mx-auto text-slate-400 text-center">
-            <p class="text-[11px] font-semibold text-slate-600">Sol Digital Solutions by EPamar</p>
-            <p class="text-[10px] text-slate-400 mt-0.5">© 2025 - 2026 · Todos los derechos reservados</p>
+        <!-- Barra de Firma Corporativa de Fondo Azul Código -->
+        <div class="bg-[#0f172a] text-slate-300 py-4 px-4 text-center border-t border-slate-800 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-5 pointer-events-none font-mono text-[9px] leading-tight select-none overflow-hidden">
+                01001100 01101111 01100111 01101111 00100000 01010000 01010101 01001100 01001100 01001111 00100000 01010011 01001111 01001110 01000100 01010011
+            </div>
+            <div class="relative z-10 max-w-sm mx-auto">
+                <p class="text-[11px] font-semibold text-amber-300 tracking-wide">Sol Digital Solutions <span class="text-slate-400 font-normal">by</span> <span class="font-serif italic text-white">EPamar</span></p>
+                <p class="text-[10px] text-slate-400 mt-0.5">© 2025 - 2026 · Todos los derechos reservados</p>
+            </div>
         </div>
     </footer>
 
-    <!-- Botón Flotante con el Sol de la Marca -->
     <button id="helpFloatingBtn" class="fixed bottom-6 right-6 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-5 py-3.5 rounded-full shadow-xl z-40 transition-all hover:scale-105 active:scale-95 flex items-center gap-2.5 text-sm border border-amber-300/40">
         <i class="fas fa-sun text-yellow-200 text-lg drop-shadow-sm"></i>
         <span class="font-bold tracking-wide">¿Necesitas Ayuda?</span>
     </button>
 
-    <!-- Centro de Ayuda (Ajustado perfectamente a la pantalla del móvil) -->
     <div id="helpModalWindow" class="hidden fixed bottom-20 right-3 left-3 sm:left-auto sm:right-6 sm:w-[380px] max-h-[82vh] bg-white border border-orange-100 rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden transition-all duration-300">
         <div class="bg-gradient-to-r from-amber-400 to-orange-500 p-4 text-white flex justify-between items-center shadow-md">
             <div class="flex items-center gap-2.5">
@@ -201,8 +230,7 @@
                 Toca cualquier pregunta para conocer la respuesta:
             </div>
 
-            <!-- Pregunta sobre la Aplicación con Ícono de Celular -->
-            <button onclick="showHelpAnswer(4)" class="w-full text-left bg-white hover:bg-orange-50 border border-orange-200/80 p-3 rounded-2xl shadow-sm text-slate-800 font-bold transition flex items-center justify-between">
+            <button onclick="showHelpAnswer(4)" class="w-full text-left bg-white hover:bg-orange-50 border border-orange-200/80 p-3 rounded-2xl shadow-sm text-slate-800 font-medium transition flex items-center justify-between">
                 <span class="flex items-center gap-2.5">
                     <div class="w-7 h-7 rounded-xl bg-orange-100 flex items-center justify-center text-orange-500 shrink-0">
                         <i class="fas fa-mobile-screen-button text-sm"></i>
@@ -217,18 +245,23 @@
                 </p>
                 <p>Nuestra aplicación es ligera: no ocupa memoria de tu celular ni descarga archivos pesados.</p>
                 <div class="bg-white/90 p-2.5 rounded-xl border border-orange-100">
-                    <p class="font-bold text-slate-800 text-[11px] mb-0.5">En Celulares (Android / iPhone):</p>
+                    <p class="font-medium text-slate-800 text-[11px] mb-0.5">En Celulares (Android / iPhone):</p>
                     <p class="text-slate-600 text-[10px]">Toca los 3 puntos de tu navegador y selecciona <em>"Instalar aplicación"</em> o <em>"Agregar a pantalla principal"</em>.</p>
                 </div>
                 <div id="helpInstallTriggerBox" class="hidden pt-1 flex justify-center">
-                    <button id="pwaTriggerBtn" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-extrabold px-4 py-2 rounded-xl text-xs shadow flex items-center gap-2">
+                    <button id="pwaTriggerBtnInner" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-extrabold px-4 py-2 rounded-xl text-xs shadow flex items-center gap-2">
                         <i class="fas fa-arrow-down"></i> Instalar ahora en este dispositivo
                     </button>
                 </div>
             </div>
 
             <button onclick="showHelpAnswer(1)" class="w-full text-left bg-white hover:bg-orange-50 border border-orange-100 p-3 rounded-2xl shadow-sm text-slate-700 font-medium transition flex items-center justify-between">
-                <span>🛍️ ¿Cómo hago y envío mi pedido?</span>
+                <span class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-xl bg-orange-100 flex items-center justify-center text-orange-500 shrink-0">
+                        <i class="fas fa-bag-shopping text-sm"></i>
+                    </div>
+                    <span>¿Cómo hago y envío mi pedido?</span>
+                </span>
                 <i class="fas fa-chevron-down text-orange-400 text-[10px]"></i>
             </button>
             <div id="answer-1" class="hidden bg-orange-50/60 p-3 rounded-2xl text-slate-600 text-[11px] border border-orange-100 space-y-1">
@@ -238,7 +271,12 @@
             </div>
 
             <button onclick="showHelpAnswer(2)" class="w-full text-left bg-white hover:bg-orange-50 border border-orange-100 p-3 rounded-2xl shadow-sm text-slate-700 font-medium transition flex items-center justify-between">
-                <span>⏰ ¿Qué pasa si una campaña dice "Cerrada"?</span>
+                <span class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-xl bg-orange-100 flex items-center justify-center text-orange-500 shrink-0">
+                        <i class="fas fa-clock text-sm"></i>
+                    </div>
+                    <span>¿Qué pasa si una campaña dice "Cerrada"?</span>
+                </span>
                 <i class="fas fa-chevron-down text-orange-400 text-[10px]"></i>
             </button>
             <div id="answer-2" class="hidden bg-orange-50/60 p-3 rounded-2xl text-slate-600 text-[11px] border border-orange-100">
@@ -246,7 +284,12 @@
             </div>
 
             <button onclick="showHelpAnswer(3)" class="w-full text-left bg-white hover:bg-orange-50 border border-orange-100 p-3 rounded-2xl shadow-sm text-slate-700 font-medium transition flex items-center justify-between">
-                <span>💳 ¿Cómo funcionan los pagos y envíos?</span>
+                <span class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-xl bg-orange-100 flex items-center justify-center text-orange-500 shrink-0">
+                        <i class="fas fa-credit-card text-sm"></i>
+                    </div>
+                    <span>¿Cómo funcionan los pagos y envíos?</span>
+                </span>
                 <i class="fas fa-chevron-down text-orange-400 text-[10px]"></i>
             </button>
             <div id="answer-3" class="hidden bg-orange-50/60 p-3 rounded-2xl text-slate-600 text-[11px] border border-orange-100 space-y-1">
@@ -256,7 +299,6 @@
         </div>
     </div>
 
-    <!-- Modal de Contraseña de Administrador -->
     <div id="passwordModal" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-[90] flex items-center justify-center p-4 transition-opacity duration-200 opacity-0">
         <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 max-w-sm w-full shadow-2xl text-center text-white">
             <div class="w-12 h-12 bg-orange-500/20 text-orange-400 rounded-2xl flex items-center justify-center text-xl mx-auto mb-3">
@@ -272,7 +314,6 @@
         </div>
     </div>
 
-    <!-- Panel de Administración -->
     <div id="adminPanel" class="hidden fixed top-0 left-0 w-full h-full bg-slate-950/80 backdrop-blur-sm text-white z-50 flex items-center justify-center p-2 md:p-4 transform transition-opacity duration-300 opacity-0">
         <div class="bg-slate-900 rounded-3xl shadow-2xl w-full max-w-6xl max-h-[95vh] flex flex-col overflow-hidden border border-slate-800">
             <div class="flex justify-between items-center p-5 md:p-6 border-b border-slate-800 bg-slate-950/50">
@@ -385,7 +426,6 @@
         </div>
     </div>
 
-    <!-- Modal de Confirmación para Borrar -->
     <div id="confirmModal" class="hidden fixed inset-0 bg-slate-950/85 backdrop-blur-sm z-[80] flex items-center justify-center p-4 transition-opacity duration-200 opacity-0">
         <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 max-w-sm w-full shadow-2xl text-center text-white">
             <h4 class="text-lg font-bold mb-2">¿Eliminar catálogo?</h4>
@@ -609,8 +649,11 @@
         const cancelPasswordBtn = document.getElementById('cancelPasswordBtn');
         const submitPasswordBtn = document.getElementById('submitPasswordBtn');
 
-        const helpInstallTriggerBox = document.getElementById('helpInstallTriggerBox');
+        const pwaInstallBanner = document.getElementById('pwaInstallBanner');
         const pwaTriggerBtn = document.getElementById('pwaTriggerBtn');
+        const pwaTriggerBtnInner = document.getElementById('pwaTriggerBtnInner');
+        const closeInstallBannerBtn = document.getElementById('closeInstallBannerBtn');
+        const helpInstallTriggerBox = document.getElementById('helpInstallTriggerBox');
 
         function renderCatalog() {
             grid.innerHTML = '';
@@ -900,35 +943,43 @@
             setTimeout(() => adminPanel.classList.add('hidden'), 300); 
         });
 
-        // Verificación si ya está abierta como App instalada
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
 
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            // Si no está instalada, mostramos la opción dentro del Centro de Ayuda
-            if (!isStandalone && helpInstallTriggerBox) {
-                helpInstallTriggerBox.classList.remove('hidden');
+            if (!isStandalone) {
+                if (pwaInstallBanner) pwaInstallBanner.style.display = 'flex';
+                if (helpInstallTriggerBox) helpInstallTriggerBox.classList.remove('hidden');
             }
         });
 
-        if (pwaTriggerBtn) {
-            pwaTriggerBtn.addEventListener('click', async () => {
-                if (deferredPrompt) {
-                    deferredPrompt.prompt();
-                    const { outcome } = await deferredPrompt.userChoice;
-                    if (outcome === 'accepted') {
-                        showNotification('¡Gracias por instalar Sol Catálogos!', 'success');
-                        if (helpInstallTriggerBox) helpInstallTriggerBox.classList.add('hidden');
-                    }
-                    deferredPrompt = null;
-                } else {
-                    showNotification('Abre el menú de tu navegador y elige "Agregar a inicio"', 'info');
+        async function handleInstallAction() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    showNotification('¡Gracias por instalar Sol Catálogos!', 'success');
+                    if (pwaInstallBanner) pwaInstallBanner.style.display = 'none';
+                    if (helpInstallTriggerBox) helpInstallTriggerBox.classList.add('hidden');
                 }
+                deferredPrompt = null;
+            } else {
+                showNotification('Abre el menú de tu navegador y selecciona "Instalar aplicación"', 'info');
+            }
+        }
+
+        if (pwaTriggerBtn) pwaTriggerBtn.addEventListener('click', handleInstallAction);
+        if (pwaTriggerBtnInner) pwaTriggerBtnInner.addEventListener('click', handleInstallAction);
+
+        if (closeInstallBannerBtn) {
+            closeInstallBannerBtn.addEventListener('click', () => {
+                if (pwaInstallBanner) pwaInstallBanner.style.display = 'none';
             });
         }
 
         window.addEventListener('appinstalled', () => {
+            if (pwaInstallBanner) pwaInstallBanner.style.display = 'none';
             if (helpInstallTriggerBox) helpInstallTriggerBox.classList.add('hidden');
             showNotification('¡Sol Catálogos ya está instalada!', 'success');
         });
