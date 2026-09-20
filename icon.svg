@@ -1,61 +1,55 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <defs>
-    <linearGradient id="solBgApp" x1="0%" y1="0%" x2="100%" y2="100%">
+    <!-- Fondo cálido de la app -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#fbbf24"/>
       <stop offset="50%" stop-color="#f97316"/>
       <stop offset="100%" stop-color="#f43f5e"/>
     </linearGradient>
-    <linearGradient id="bookCoverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#60a5fa"/>
-      <stop offset="100%" stop-color="#2563eb"/>
-    </linearGradient>
   </defs>
+  
+  <rect width="512" height="512" rx="116" fill="url(#bg)"/>
 
-  <!-- Fondo base con degradado cálido de la app -->
-  <rect width="512" height="512" rx="116" fill="url(#solBgApp)"/>
-
-  <!-- SOL RADIANTE SUPERIOR -->
-  <g transform="translate(0, -12)">
-    <circle cx="256" cy="148" r="44" fill="#fde047"/>
-    <circle cx="256" cy="148" r="34" fill="#facc15"/>
-    <g stroke="#fef08a" stroke-width="10" stroke-linecap="round">
-      <line x1="256" y1="74" x2="256" y2="94"/>
-      <line x1="256" y1="202" x2="256" y2="222"/>
-      <line x1="182" y1="148" x2="202" y2="148"/>
-      <line x1="310" y1="148" x2="330" y2="148"/>
-      <line x1="204" y1="96" x2="218" y2="110"/>
-      <line x1="294" y1="186" x2="308" y2="200"/>
-      <line x1="204" y1="200" x2="218" y2="186"/>
-      <line x1="294" y1="110" x2="308" y2="96"/>
+  <!-- Sol Radiante Superior -->
+  <g transform="translate(0, -10)">
+    <circle cx="256" cy="135" r="46" fill="#facc15"/>
+    <g stroke="#fef08a" stroke-width="12" stroke-linecap="round">
+      <line x1="256" y1="50" x2="256" y2="70"/>
+      <line x1="256" y1="200" x2="256" y2="220"/>
+      <line x1="171" y1="135" x2="191" y2="135"/>
+      <line x1="321" y1="135" x2="341" y2="135"/>
+      <line x1="196" y1="75" x2="210" y2="89"/>
+      <line x1="302" y1="181" x2="316" y2="195"/>
+      <line x1="196" y1="195" x2="210" y2="181"/>
+      <line x1="302" y1="89" x2="316" y2="75"/>
     </g>
   </g>
 
-  <!-- LIBRO / CATÁLOGO EN PERSPECTIVA (INFERIOR) -->
-  <!-- Sombra proyectada del libro en la parte inferior -->
-  <g opacity="0.45">
-    <path d="M 160 415 L 352 415 L 362 432 L 150 432 Z" fill="#9a3412"/>
+  <!-- Catálogo Cerrado en Perspectiva 3D (Idéntico a tu boceto) -->
+  <g transform="translate(0, 10)">
+    <!-- Sombra en el piso -->
+    <polygon points="160,425 370,425 340,450 130,450" fill="#9a3412" opacity="0.4"/>
+    
+    <!-- Bloque de páginas blancas (Grosor derecho) -->
+    <polygon points="315,250 355,265 355,415 315,400" fill="#e2e8f0"/>
+    <polygon points="315,250 340,270 340,420 315,400" fill="#f8fafc"/>
+
+    <!-- Portada Principal Base (Azul medio) -->
+    <polygon points="150,270 315,250 315,400 150,420" fill="#60a5fa"/>
+    
+    <!-- Mitad izquierda más clara (Celeste) -->
+    <polygon points="150,270 232.5,260 232.5,410 150,420" fill="#93c5fd"/>
+    
+    <!-- Cuadro Blanco de Título -->
+    <polygon points="170,290 270,278 270,318 170,330" fill="#ffffff" opacity="0.95"/>
+    
+    <!-- Círculo Amarillo -->
+    <circle cx="260" cy="345" r="28" fill="#fde047"/>
+    
+    <!-- Óvalo Naranja -->
+    <ellipse cx="190" cy="370" rx="20" ry="45" fill="#ea580c" transform="rotate(-15, 190, 370)"/>
+    
+    <!-- Duna / Curva Amarilla Inferior -->
+    <path d="M 150 405 Q 232.5 355 315 375 L 315 400 L 150 420 Z" fill="#facc15"/>
   </g>
-
-  <!-- Hojas apiladas del lado derecho (grosor del libro) -->
-  <path d="M 330 270 L 352 282 L 352 405 L 330 393 Z" fill="#e2e8f0"/>
-  <path d="M 312 276 L 330 286 L 330 393 L 312 383 Z" fill="#f1f5f9"/>
-
-  <!-- Tapa principal del libro (Portada de Revista) -->
-  <path d="M 160 258 Q 235 246 252 258 L 252 398 Q 235 386 160 398 Z" fill="url(#bookCoverGrad)"/>
-  
-  <!-- Estética editorial en la portada -->
-  <!-- Cuadro superior blanco de título -->
-  <path d="M 182 280 L 228 288 L 228 322 L 182 314 Z" fill="#ffffff" opacity="0.95"/>
-  <!-- Círculo estético amarillo -->
-  <circle cx="215" cy="345" r="20" fill="#fde047"/>
-  <!-- Franja geométrica inferior -->
-  <path d="M 160 365 Q 195 358 252 365 L 252 398 Q 195 388 160 398 Z" fill="#fbbf24"/>
-  <!-- Forma ovalada naranja -->
-  <ellipse cx="182" cy="350" rx="11" ry="22" fill="#ea580c" transform="rotate(-10, 182, 350)"/>
-
-  <!-- Páginas interiores curvadas a la derecha del lomo -->
-  <path d="M 252 258 Q 268 246 312 276 L 312 383 Q 268 355 252 398 Z" fill="#f8fafc"/>
-  
-  <!-- Lomo central divisorio -->
-  <line x1="252" y1="258" x2="252" y2="398" stroke="#1e3a8a" stroke-width="2.5" opacity="0.3"/>
 </svg>
