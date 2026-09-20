@@ -8,7 +8,7 @@
     <!-- Meta etiquetas Open Graph fijas para WhatsApp, Telegram y Redes (Siempre mostrarán 'sol-logo.png') -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Sol - Venta por Catálogo">
-    <meta property="og:description" content="Explora los catálogos digitales actualizados de venta directa en Colombia.">
+    <meta property="og:description" content="☀️ ¡Mira los catálogos digitales interactivos de Sol aquí:">
     <meta property="og:image" content="https://soldigitalsolutions.github.io/revistas-digitales/sol-logo.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -18,7 +18,7 @@
     <!-- Meta etiquetas Twitter Card fijas -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Sol - Venta por Catálogo">
-    <meta name="twitter:description" content="Catálogos digitales interactivos y actualizados de venta directa en Colombia.">
+    <meta name="twitter:description" content="☀️ ¡Mira los catálogos digitales interactivos de Sol aquí:">
     <meta name="twitter:image" content="https://soldigitalsolutions.github.io/revistas-digitales/sol-logo.png">
 
     <meta name="theme-color" content="#f97316">
@@ -39,6 +39,7 @@
             font-family: 'Inter', sans-serif;
             background-color: #fffbf7;
             color: #334155;
+            padding-bottom: 70px; /* Espacio para que el botón flotante no tape el pie */
         }
         .brand-title { font-family: 'Playfair Display', serif; }
         .sunset-glow { background: radial-gradient(circle at 50% -20%, rgba(251, 146, 60, 0.08) 0%, rgba(255, 251, 247, 0) 70%); }
@@ -114,7 +115,6 @@
 </head>
 <body class="min-h-screen flex flex-col sunset-glow">
 
-    <!-- Encabezado Principal Sol - Animado Original -->
     <header class="bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 text-white py-12 px-4 shadow-lg relative overflow-hidden">
         <div class="container mx-auto text-center flex flex-col items-center justify-center relative z-10">
             <div class="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center animate-sun-pulse mb-3">
@@ -193,7 +193,6 @@
                 <p id="paymentFlexDisplay" class="text-xs text-slate-500 mt-1">Pagos y envíos flexibles acordados con asesor.</p>
             </div>
 
-            <!-- Botón de administración discreto y aislado -->
             <div class="mt-5">
                 <button id="toggleAdminBtn" class="text-[11px] text-slate-400 hover:text-slate-600 transition-colors font-normal bg-transparent px-3 py-1 rounded-full border border-transparent hover:border-slate-200 inline-flex items-center gap-1.5 opacity-60 hover:opacity-100">
                     <i class="fas fa-lock text-[10px]"></i> Gestionar Kiosco
@@ -201,7 +200,6 @@
             </div>
         </div>
 
-        <!-- Franja Azul de Derechos Reservados -->
         <div class="bg-[#0f172a] text-slate-300 py-3.5 px-4 text-center border-t border-slate-800 relative overflow-hidden">
             <div class="absolute inset-0 opacity-5 pointer-events-none font-mono text-[9px] leading-tight select-none overflow-hidden">
                 01001100 01101111 01100111 01100111 00100000 01010000 01010111 01001100 01001110 00100000 01010011 01001111 01000100 0101001s
@@ -213,11 +211,10 @@
         </div>
     </footer>
 
-    <!-- Botón Flotante de Ayuda Optimizando Espacio -->
     <button id="helpFloatingBtn" class="fixed bottom-3 right-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white p-2.5 sm:px-4 sm:py-2.5 rounded-full shadow-2xl z-40 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 text-xs border border-amber-300/40" title="Centro de Ayuda">
         <i class="fas fa-sun text-yellow-200 text-base drop-shadow-sm"></i>
-        <span class="font-bold tracking-wide hidden sm:inline">¿Necesitas Ayuda?</span>
-        <span class="font-bold tracking-wide sm:hidden">¿Ayuda?</span>
+        <span class="font-bold tracking-wide hidden sm:inline">¿Ayuda?</span>
+        <span class="font-bold tracking-wide sm:hidden">?</span>
     </button>
 
     <div id="helpModalWindow" class="hidden fixed bottom-16 right-3 left-3 sm:left-auto sm:right-5 sm:w-[380px] max-h-[80vh] bg-white border border-orange-100 rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden transition-all duration-300">
@@ -247,7 +244,7 @@
                     <div class="w-7 h-7 rounded-xl bg-white/20 flex items-center justify-center text-yellow-200 shrink-0">
                         <i class="fas fa-share-nodes text-sm"></i>
                     </div>
-                    <span id="modalShareLabel">Compartir con amigos</span>
+                    <span id="modalShareLabel">Compartir Kiosco con amigos</span>
                 </span>
                 <i class="fas fa-chevron-right text-orange-200 text-xs"></i>
             </button>
@@ -321,7 +318,6 @@
         </div>
     </div>
 
-    <!-- Modal Clave Administrador -->
     <div id="passwordModal" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-[90] flex items-center justify-center p-4 opacity-0">
         <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 max-w-sm w-full shadow-2xl text-center text-white">
             <div class="w-12 h-12 bg-orange-500/20 text-orange-400 rounded-2xl flex items-center justify-center text-xl mx-auto mb-3">
@@ -337,7 +333,6 @@
         </div>
     </div>
 
-    <!-- Panel de Administración -->
     <div id="adminPanel" class="hidden fixed top-0 left-0 w-full h-full bg-slate-950/80 backdrop-blur-sm text-white z-50 flex items-center justify-center p-2 opacity-0">
         <div class="bg-slate-900 rounded-3xl shadow-2xl w-full max-w-6xl max-h-[95vh] flex flex-col overflow-hidden border border-slate-800">
             <div class="flex justify-between items-center p-5 md:p-6 border-b border-slate-800 bg-slate-950/50">
@@ -446,7 +441,6 @@
         </div>
     </div>
 
-    <!-- Modal Confirmación Eliminación -->
     <div id="confirmModal" class="hidden fixed inset-0 bg-slate-950/85 backdrop-blur-sm z-[80] flex items-center justify-center p-4 transition-opacity duration-200 opacity-0">
         <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 max-w-sm w-full shadow-2xl text-center text-white">
             <h4 class="text-lg font-bold mb-2">¿Eliminar catálogo?</h4>
@@ -490,12 +484,7 @@
 
         function updateShareLabels() {
             const isApp = isStandaloneApp();
-            const footerLabel = document.getElementById('footerShareLabel');
             const modalLabel = document.getElementById('modalShareLabel');
-            
-            if (footerLabel) {
-                footerLabel.textContent = isApp ? 'Compartir App' : 'Compartir Kiosco';
-            }
             if (modalLabel) {
                 modalLabel.textContent = isApp ? 'Compartir esta App con amigos' : 'Compartir Kiosco con amigos';
             }
@@ -858,6 +847,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             sortMagazinesByDeadline();
             updateAllViews();
+            updateShareLabels();
             if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(() => {});
             if (typeof Sortable !== 'undefined') {
                 Sortable.create(grid, {
