@@ -2,28 +2,34 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sol - Venta por Catálogo</title>
 
-    <!-- Meta etiquetas PWA y colores de la marca -->
+    <!-- Metadatos de la PWA -->
     <meta name="theme-color" content="#f97316">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Sol Catálogos">
     <link rel="manifest" href="./manifest.json">
 
-    <!-- Frameworks y Librerías Externas -->
+    <!-- Frameworks y Librerías -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js" crossorigin="anonymous"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #fffbf7; color: #334155; }
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            font-family: 'Inter', sans-serif;
+            background-color: #fffbf7;
+            color: #334155;
+        }
         .brand-title { font-family: 'Playfair Display', serif; }
         .sunset-glow { background: radial-gradient(circle at 50% -20%, rgba(251, 146, 60, 0.08) 0%, rgba(255, 251, 247, 0) 70%); }
         
-        /* Proporciones de la tarjeta de revista */
+        /* Proporciones de las revistas */
         .magazine-card { 
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
             height: 360px; 
@@ -59,7 +65,7 @@
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Animaciones combinadas del Sol Principal */
+        /* Animación original del Sol: rotación fluida y respiración luminosa */
         @keyframes sun-spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -71,54 +77,11 @@
             }
             50% { 
                 transform: scale(1.12); 
-                filter: drop-shadow(0 0 32px rgba(254, 240, 138, 1)) drop-shadow(0 0 18px rgba(249, 115, 22, 0.85)); 
+                filter: drop-shadow(0 0 30px rgba(254, 240, 138, 1)) drop-shadow(0 0 18px rgba(249, 115, 22, 0.85)); 
             }
         }
         .animate-sun-spin { animation: sun-spin 12s linear infinite; }
         .animate-sun-pulse { animation: sun-pulse 3.2s ease-in-out infinite; }
-
-        /* Animación suave para el Cactus y su flor */
-        @keyframes cactus-breeze {
-            0%, 100% { transform: rotate(0deg); }
-            35% { transform: rotate(2.5deg); }
-            70% { transform: rotate(-1.5deg); }
-        }
-        .animate-cactus {
-            transform-origin: bottom center;
-            animation: cactus-breeze 5s ease-in-out infinite;
-        }
-
-        @keyframes flower-bloom {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 3px rgba(244, 63, 94, 0.5)); }
-            50% { transform: scale(1.18); filter: drop-shadow(0 0 8px rgba(244, 63, 94, 0.9)); }
-        }
-        .animate-flower {
-            transform-origin: center;
-            animation: flower-bloom 2.8s ease-in-out infinite;
-        }
-
-        /* Banner de instalación flotante con respiración sutil */
-        @keyframes banner-breath {
-            0%, 100% { 
-                transform: translateY(0); 
-                box-shadow: 0 12px 28px -6px rgba(234, 88, 12, 0.25), 0 4px 12px rgba(0,0,0,0.06); 
-            }
-            50% { 
-                transform: translateY(-4px); 
-                box-shadow: 0 18px 36px -6px rgba(234, 88, 12, 0.38), 0 8px 16px rgba(0,0,0,0.08); 
-            }
-        }
-        .animate-install-banner {
-            animation: banner-breath 3.5s ease-in-out infinite;
-        }
-
-        @keyframes button-shimmer {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.04); }
-        }
-        .animate-install-btn {
-            animation: button-shimmer 2.2s ease-in-out infinite;
-        }
 
         @keyframes badge-pulse {
             0%, 100% { transform: scale(1); opacity: 0.95; }
@@ -127,23 +90,20 @@
         .animate-badge {
             animation: badge-pulse 2s ease-in-out infinite;
         }
+
+        /* Si la app ya está instalada, el banner nunca se muestra por CSS */
+        @media all and (display-mode: standalone) {
+            #pwaInstallBanner { display: none !important; }
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col sunset-glow">
 
-    <!-- Encabezado con Sol Protagonista y Paisaje Ilustrado (Mini Sol + Cactus con Flor) -->
-    <header class="bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 text-white pt-12 pb-14 px-4 shadow-lg relative overflow-hidden">
-        
-        <!-- Siluetas suaves de dunas en el fondo del atardecer -->
-        <div class="absolute inset-x-0 bottom-0 pointer-events-none opacity-20 flex justify-center">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="w-full h-12 fill-white">
-                <path d="M0,80 C300,120 450,40 700,75 C950,110 1050,50 1200,80 L1200,120 L0,120 Z"></path>
-            </svg>
-        </div>
-
+    <!-- Encabezado Original Limpio (Sol animado exclusivo de la marca) -->
+    <header class="bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 text-white py-12 px-4 shadow-lg relative overflow-hidden">
         <div class="container mx-auto text-center flex flex-col items-center justify-center relative z-10">
             
-            <!-- Sol Principal Radiante -->
+            <!-- Sol Protagónico con sus rayos simétricos originales -->
             <div class="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center animate-sun-pulse mb-3">
                 <div class="w-full h-full animate-sun-spin flex items-center justify-center">
                     <svg viewBox="0 0 100 100" class="w-full h-full fill-amber-100">
@@ -154,52 +114,12 @@
                 </div>
             </div>
 
-            <!-- Escena Central: Mini-Sol a la izquierda, Marca "Sol" al centro, y Cactus con Flor a la derecha -->
-            <div class="flex items-center justify-center gap-3 sm:gap-6 mt-1">
-                
-                <!-- Mini Sol de Paisaje (Izquierda) -->
-                <div class="w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center animate-sun-spin opacity-95 drop-shadow">
-                    <svg viewBox="0 0 40 40" class="w-full h-full">
-                        <circle cx="20" cy="20" r="8" fill="#fde047"></circle>
-                        <path d="M20,3 L20,8 M20,32 L20,37 M3,20 L8,20 M32,20 L37,20 M8,8 L12,12 M28,28 L32,32 M8,32 L12,28 M28,8 L32,12" stroke="#fef08a" stroke-width="2.5" stroke-linecap="round"></path>
-                    </svg>
-                </div>
-
-                <!-- Título de la Marca -->
-                <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight brand-title text-white drop-shadow-sm">Sol</h1>
-
-                <!-- Cactus con Flor Bonita (Derecha) -->
-                <div class="w-9 h-11 sm:w-11 sm:h-13 flex items-end justify-center animate-cactus">
-                    <svg viewBox="0 0 50 65" class="w-full h-full overflow-visible">
-                        <!-- Flor de cactus fucsia en la corona -->
-                        <g class="animate-flower">
-                            <circle cx="25" cy="8" r="5.5" fill="#f43f5e"></circle>
-                            <circle cx="22" cy="5" r="4.5" fill="#fb7185"></circle>
-                            <circle cx="28" cy="5" r="4.5" fill="#fb7185"></circle>
-                            <circle cx="25" cy="4" r="4" fill="#fda4af"></circle>
-                            <circle cx="25" cy="7" r="2.2" fill="#fef08a"></circle>
-                        </g>
-                        <!-- Tronco principal del cactus -->
-                        <rect x="19" y="14" width="12" height="46" rx="6" fill="#15803d"></rect>
-                        <line x1="25" y1="18" x2="25" y2="58" stroke="#166534" stroke-width="1.8" stroke-linecap="round"></line>
-                        <!-- Brazo izquierdo -->
-                        <path d="M19,36 L12,36 A 5,5 0 0,1 7,31 L7,24 A 3,3 0 0,1 13,24 L13,29 A 1,1 0 0,0 14,30 L19,30" fill="#15803d"></path>
-                        <!-- Brazo derecho -->
-                        <path d="M31,43 L38,43 A 5,5 0 0,0 43,38 L43,28 A 3,3 0 0,0 37,28 L37,35 A 1,1 0 0,1 36,36 L31,36" fill="#15803d"></path>
-                        <!-- Pequeñas espinas estéticas -->
-                        <circle cx="10" cy="22" r="1" fill="#fef08a"></circle>
-                        <circle cx="40" cy="26" r="1" fill="#fef08a"></circle>
-                        <circle cx="21" cy="28" r="0.9" fill="#fef08a"></circle>
-                        <circle cx="29" cy="38" r="0.9" fill="#fef08a"></circle>
-                    </svg>
-                </div>
-            </div>
-
-            <span class="text-[11px] sm:text-xs font-bold tracking-[0.4em] uppercase mt-3 block text-orange-50 drop-shadow-sm">Venta por Catálogo</span>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight brand-title text-white drop-shadow-sm">Sol</h1>
+            <span class="text-xs font-bold tracking-[0.4em] uppercase mt-2.5 block text-orange-50">Venta por Catálogo</span>
         </div>
     </header>
 
-    <!-- Instrucciones Rápidas -->
+    <!-- Instrucciones de 3 Pasos -->
     <section class="container mx-auto px-4 py-8 max-w-4xl">
         <div class="bg-white/80 border border-orange-100 rounded-3xl p-6 shadow-sm backdrop-blur-sm">
             <h3 class="font-bold text-orange-900 mb-4 text-center text-sm md:text-base">¿Cómo hacer tu pedido?</h3>
@@ -211,10 +131,10 @@
         </div>
     </section>
 
-    <!-- Catálogos en Grid -->
-    <main class="flex-grow container mx-auto px-4 pb-12 max-w-7xl">
-        <div id="magazineGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 md:gap-6">
-            <!-- Catálogos generados dinámicamente -->
+    <!-- Estantería de Revistas -->
+    <main class="flex-grow container mx-auto px-4 pb-14 max-w-7xl">
+        <div id="magazineGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+            <!-- Inyectado dinámicamente -->
         </div>
         
         <div id="emptyState" class="hidden text-center py-20 text-orange-400 bg-white/50 rounded-3xl border border-dashed border-orange-200">
@@ -223,62 +143,7 @@
         </div>
     </main>
 
-    <!-- Banner de Instalación PWA (Abajo, Cálido, con Respiración y Confianza Anti-Virus) -->
-    <section id="pwaInstallBanner" class="container mx-auto px-4 pb-10 max-w-2xl">
-        <div class="bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 rounded-3xl p-4 sm:p-5 text-white shadow-xl flex items-center justify-between gap-3 border border-amber-300/40 animate-install-banner relative">
-            <div class="flex items-center gap-3 sm:gap-4">
-                
-                <!-- Ícono Centrado y Equilibrado del Sol y la Revista -->
-                <div class="w-13 h-13 sm:w-14 sm:h-14 shrink-0 rounded-2xl bg-white/20 p-1.5 flex items-center justify-center shadow-inner backdrop-blur-sm">
-                    <svg viewBox="0 0 100 100" class="w-full h-full">
-                        <!-- Sol Dorado Centrado -->
-                        <circle cx="50" cy="34" r="14" fill="#fde047"></circle>
-                        <g stroke="#fef08a" stroke-width="2.6" stroke-linecap="round">
-                            <line x1="50" y1="13" x2="50" y2="18"></line>
-                            <line x1="50" y1="50" x2="50" y2="55"></line>
-                            <line x1="29" y1="34" x2="34" y2="34"></line>
-                            <line x1="66" y1="34" x2="71" y2="34"></line>
-                            <line x1="35" y1="19" x2="39" y2="23"></line>
-                            <line x1="61" y1="45" x2="65" y2="49"></line>
-                            <line x1="35" y1="49" x2="39" y2="45"></line>
-                            <line x1="61" y1="19" x2="65" y2="23"></line>
-                        </g>
-                        <!-- Revista / Catálogo Abierto Detallado -->
-                        <path d="M22 66 C 35 59 45 63 50 66 C 55 63 65 59 78 66 L 78 84 C 65 77 55 81 50 84 C 45 81 35 77 22 84 Z" fill="#ffffff" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.15))"></path>
-                        <!-- Lomo central -->
-                        <line x1="50" y1="66" x2="50" y2="84" stroke="#ea580c" stroke-width="1.8"></line>
-                        <!-- Líneas sutiles de páginas -->
-                        <line x1="28" y1="72" x2="44" y2="72" stroke="#fed7aa" stroke-width="1.2" stroke-linecap="round"></line>
-                        <line x1="28" y1="76" x2="40" y2="76" stroke="#fed7aa" stroke-width="1.2" stroke-linecap="round"></line>
-                        <!-- Detalle de cosmético / estrella en página derecha -->
-                        <circle cx="64" cy="73" r="2.2" fill="#fb7185"></circle>
-                        <line x1="56" y1="78" x2="72" y2="78" stroke="#fed7aa" stroke-width="1.2" stroke-linecap="round"></line>
-                    </svg>
-                </div>
-
-                <div>
-                    <div class="flex items-center gap-1.5 mb-0.5">
-                        <h4 class="font-extrabold text-sm sm:text-base leading-tight">Instalar App Sol Catálogos</h4>
-                        <span class="bg-emerald-400 text-slate-900 text-[9px] font-black uppercase px-1.5 py-0.5 rounded-md flex items-center gap-0.5">
-                            <i class="fas fa-shield-alt text-[8px]"></i> 100% Segura
-                        </span>
-                    </div>
-                    <p class="text-[11px] sm:text-xs text-orange-100 leading-snug">Acceso directo en 1 toque. Sin descargas pesadas ni virus.</p>
-                </div>
-            </div>
-
-            <div class="flex items-center gap-2">
-                <button id="pwaTriggerBtn" class="bg-white hover:bg-orange-50 text-orange-600 font-extrabold px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-2xl shadow-lg transition text-xs sm:text-sm whitespace-nowrap animate-install-btn flex items-center gap-1.5">
-                    <i class="fas fa-arrow-down"></i> Instalar
-                </button>
-                <button id="closeInstallBannerBtn" class="text-orange-200 hover:text-white p-1.5 transition text-sm" title="Cerrar aviso">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pie de Página con Firma Corporativa y Derechos Reservados -->
+    <!-- Pie de Página Limpio -->
     <footer class="bg-white border-t border-orange-100 py-12 text-center">
         <div class="brand-title text-3xl text-orange-400 font-bold mb-1">Sol</div>
         <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8 italic">Trayectoria y confianza desde 2004</p>
@@ -301,11 +166,9 @@
             </button>
         </div>
 
-        <!-- Firma de Organización y Derechos Reservados -->
-        <div class="mt-10 pt-6 border-t border-orange-50 max-w-sm mx-auto text-slate-400 text-center">
+        <div class="mt-10 pt-6 border-t border-orange-50 max-w-xs mx-auto text-slate-400 text-center">
             <p class="text-[11px] font-semibold text-slate-600">Sol Digital Solutions by EPamar</p>
-            <p class="text-[10px] text-slate-400 mt-1">© 2025 - 2026 · Todos los derechos reservados</p>
-            <p class="text-[9px] text-orange-400/80 mt-1 uppercase tracking-widest font-medium">Kiosco de Revistas Digitales</p>
+            <p class="text-[10px] text-slate-400 mt-0.5">© 2025 - 2026 · Todos los derechos reservados</p>
         </div>
     </footer>
 
@@ -315,8 +178,8 @@
         <span class="font-bold tracking-wide">¿Necesitas Ayuda?</span>
     </button>
 
-    <!-- Centro de Ayuda con Explicación de la Aplicación -->
-    <div id="helpModalWindow" class="hidden fixed bottom-24 right-4 sm:right-6 w-[92%] sm:w-[390px] max-h-[82vh] bg-white border border-orange-100 rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden transition-all duration-300">
+    <!-- Centro de Ayuda (Ajustado perfectamente a la pantalla del móvil) -->
+    <div id="helpModalWindow" class="hidden fixed bottom-20 right-3 left-3 sm:left-auto sm:right-6 sm:w-[380px] max-h-[82vh] bg-white border border-orange-100 rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden transition-all duration-300">
         <div class="bg-gradient-to-r from-amber-400 to-orange-500 p-4 text-white flex justify-between items-center shadow-md">
             <div class="flex items-center gap-2.5">
                 <div class="bg-white/20 p-2 rounded-xl flex items-center justify-center">
@@ -324,7 +187,7 @@
                 </div>
                 <div>
                     <h4 class="font-bold text-sm">Centro de Ayuda Sol</h4>
-                    <p class="text-[9px] text-orange-100">Información sobre pedidos, pagos y app</p>
+                    <p class="text-[9px] text-orange-100">Información sobre pedidos, pagos y catálogo</p>
                 </div>
             </div>
             <button id="closeHelpModalBtn" class="text-white hover:text-orange-200 transition-colors p-1">
@@ -335,21 +198,33 @@
         <div class="p-4 overflow-y-auto space-y-3 bg-orange-50/10 text-xs hide-scrollbar">
             <div class="bg-white border border-orange-50 p-3.5 rounded-2xl text-slate-700 shadow-sm">
                 <p class="font-bold text-orange-600 mb-1 flex items-center gap-1.5"><i class="fas fa-sun text-amber-500"></i> ¡Bienvenid@ a Sol Catálogos!</p>
-                Toca cualquier pregunta para conocer más:
+                Toca cualquier pregunta para conocer la respuesta:
             </div>
 
-            <!-- Pregunta sobre la Aplicación y Seguridad -->
-            <button onclick="showHelpAnswer(4)" class="w-full text-left bg-white hover:bg-orange-50 border border-orange-200/80 p-3 rounded-2xl shadow-sm text-slate-800 font-bold transition flex items-center justify-between text-orange-950">
-                <span class="flex items-center gap-2"><i class="fas fa-mobile-screen text-orange-500"></i> ¿Cómo instalar la App en mi celular o PC?</span>
+            <!-- Pregunta sobre la Aplicación con Ícono de Celular -->
+            <button onclick="showHelpAnswer(4)" class="w-full text-left bg-white hover:bg-orange-50 border border-orange-200/80 p-3 rounded-2xl shadow-sm text-slate-800 font-bold transition flex items-center justify-between">
+                <span class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-xl bg-orange-100 flex items-center justify-center text-orange-500 shrink-0">
+                        <i class="fas fa-mobile-screen-button text-sm"></i>
+                    </div>
+                    <span>¿Cómo tener la App en tu celular o PC?</span>
+                </span>
                 <i class="fas fa-chevron-down text-orange-400 text-[10px]"></i>
             </button>
-            <div id="answer-4" class="hidden bg-orange-50/70 p-3.5 rounded-2xl text-slate-700 text-[11px] border border-orange-200 space-y-2 leading-relaxed">
-                <p class="font-semibold text-emerald-700 flex items-center gap-1">
-                    <i class="fas fa-check-circle text-emerald-600"></i> ¡Es 100% segura y libre de virus!
+            <div id="answer-4" class="hidden bg-orange-50/70 p-3.5 rounded-2xl text-slate-700 text-[11px] border border-orange-200 space-y-2.5 leading-relaxed">
+                <p class="font-semibold text-emerald-700 flex items-center gap-1.5">
+                    <i class="fas fa-shield-halved text-emerald-600"></i> ¡100% Segura y Oficial de Sol!
                 </p>
-                <p>Nuestra aplicación es una <strong>App Web Oficial</strong>. No consume almacenamiento de tu celular ni requiere descargas lentas de tiendas.</p>
-                <p><strong>En Celulares (Android / iPhone):</strong> Presiona el botón <em>"Instalar"</em> en la parte inferior o abre el menú de tu navegador y elige <em>"Instalar"</em> o <em>"Agregar a inicio"</em>. Tendrás el icono de Sol en tu pantalla al instante.</p>
-                <p><strong>En Computadores / Tablets:</strong> También puedes instalarla desde la barra del navegador para ingresar con 1 solo clic desde tu escritorio.</p>
+                <p>Nuestra aplicación es ligera: no ocupa memoria de tu celular ni descarga archivos pesados.</p>
+                <div class="bg-white/90 p-2.5 rounded-xl border border-orange-100">
+                    <p class="font-bold text-slate-800 text-[11px] mb-0.5">En Celulares (Android / iPhone):</p>
+                    <p class="text-slate-600 text-[10px]">Toca los 3 puntos de tu navegador y selecciona <em>"Instalar aplicación"</em> o <em>"Agregar a pantalla principal"</em>.</p>
+                </div>
+                <div id="helpInstallTriggerBox" class="hidden pt-1 flex justify-center">
+                    <button id="pwaTriggerBtn" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-extrabold px-4 py-2 rounded-xl text-xs shadow flex items-center gap-2">
+                        <i class="fas fa-arrow-down"></i> Instalar ahora en este dispositivo
+                    </button>
+                </div>
             </div>
 
             <button onclick="showHelpAnswer(1)" class="w-full text-left bg-white hover:bg-orange-50 border border-orange-100 p-3 rounded-2xl shadow-sm text-slate-700 font-medium transition flex items-center justify-between">
@@ -367,7 +242,7 @@
                 <i class="fas fa-chevron-down text-orange-400 text-[10px]"></i>
             </button>
             <div id="answer-2" class="hidden bg-orange-50/60 p-3 rounded-2xl text-slate-600 text-[11px] border border-orange-100">
-                Indica que el plazo de esa edición ya venció. Solo debes esperar a que tu asesora publique la nueva campaña y el catálogo se habilitará de nuevo automáticamente. ¡Explora las demás marcas activas!
+                Indica que el plazo de esa edición ya venció. Solo debes esperar a que tu asesora publique la nueva campaña y el catálogo se habilitará de nuevo automáticamente.
             </div>
 
             <button onclick="showHelpAnswer(3)" class="w-full text-left bg-white hover:bg-orange-50 border border-orange-100 p-3 rounded-2xl shadow-sm text-slate-700 font-medium transition flex items-center justify-between">
@@ -376,12 +251,12 @@
             </button>
             <div id="answer-3" class="hidden bg-orange-50/60 p-3 rounded-2xl text-slate-600 text-[11px] border border-orange-100 space-y-1">
                 <p>• Puedes cancelar mediante transferencias (Nequi / Llave / Bre-B).</p>
-                <p>• Los plazos de pago, entregas y formas de envío son <strong>acordados flexiblemente con tu asesora</strong> al momento de confirmar tu pedido.</p>
+                <p>• Los plazos de pago, entregas y formas de envío son acordados directamente con tu asesora.</p>
             </div>
         </div>
     </div>
 
-    <!-- Modal de Contraseña -->
+    <!-- Modal de Contraseña de Administrador -->
     <div id="passwordModal" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-[90] flex items-center justify-center p-4 transition-opacity duration-200 opacity-0">
         <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 max-w-sm w-full shadow-2xl text-center text-white">
             <div class="w-12 h-12 bg-orange-500/20 text-orange-400 rounded-2xl flex items-center justify-center text-xl mx-auto mb-3">
@@ -734,9 +609,8 @@
         const cancelPasswordBtn = document.getElementById('cancelPasswordBtn');
         const submitPasswordBtn = document.getElementById('submitPasswordBtn');
 
-        const pwaInstallBanner = document.getElementById('pwaInstallBanner');
+        const helpInstallTriggerBox = document.getElementById('helpInstallTriggerBox');
         const pwaTriggerBtn = document.getElementById('pwaTriggerBtn');
-        const closeInstallBannerBtn = document.getElementById('closeInstallBannerBtn');
 
         function renderCatalog() {
             grid.innerHTML = '';
@@ -1026,12 +900,15 @@
             setTimeout(() => adminPanel.classList.add('hidden'), 300); 
         });
 
-        /* Manejo de la instalación PWA */
+        // Verificación si ya está abierta como App instalada
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            if (pwaInstallBanner) {
-                pwaInstallBanner.classList.remove('hidden');
+            // Si no está instalada, mostramos la opción dentro del Centro de Ayuda
+            if (!isStandalone && helpInstallTriggerBox) {
+                helpInstallTriggerBox.classList.remove('hidden');
             }
         });
 
@@ -1042,28 +919,22 @@
                     const { outcome } = await deferredPrompt.userChoice;
                     if (outcome === 'accepted') {
                         showNotification('¡Gracias por instalar Sol Catálogos!', 'success');
+                        if (helpInstallTriggerBox) helpInstallTriggerBox.classList.add('hidden');
                     }
                     deferredPrompt = null;
                 } else {
-                    showNotification('Usa el menú de tu navegador y elige "Agregar a pantalla principal"', 'info');
+                    showNotification('Abre el menú de tu navegador y elige "Agregar a inicio"', 'info');
                 }
             });
         }
 
-        if (closeInstallBannerBtn) {
-            closeInstallBannerBtn.addEventListener('click', () => {
-                pwaInstallBanner.classList.add('hidden');
-            });
-        }
-
         window.addEventListener('appinstalled', () => {
-            if (pwaInstallBanner) pwaInstallBanner.classList.add('hidden');
+            if (helpInstallTriggerBox) helpInstallTriggerBox.classList.add('hidden');
             showNotification('¡Sol Catálogos ya está instalada!', 'success');
         });
 
         function downloadUpdatedTemplate() {
             try {
-                // Eliminar avisos temporales para no guardar basura en el archivo
                 document.querySelectorAll('.fixed.bottom-4.right-4').forEach(t => t.remove());
 
                 let docClone = document.documentElement.cloneNode(true);
@@ -1075,7 +946,7 @@
                 if (clonePass) clonePass.className = "hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-[90] flex items-center justify-center p-4 transition-opacity duration-200 opacity-0";
 
                 const cloneHelp = docClone.querySelector('#helpModalWindow');
-                if (cloneHelp) cloneHelp.className = "hidden fixed bottom-24 right-4 sm:right-6 w-[92%] sm:w-[390px] max-h-[82vh] bg-white border border-orange-100 rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden transition-all duration-300";
+                if (cloneHelp) cloneHelp.className = "hidden fixed bottom-20 right-3 left-3 sm:left-auto sm:right-6 sm:w-[380px] max-h-[82vh] bg-white border border-orange-100 rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden transition-all duration-300";
 
                 let htmlContent = "<!DOCTYPE html>\n" + docClone.outerHTML;
 
@@ -1103,7 +974,6 @@
             sortMagazinesByDeadline();
             updateAllViews();
             
-            // Registro del Service Worker para funcionamiento como App
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('./sw.js').catch(() => {});
             }
