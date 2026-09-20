@@ -1,24 +1,24 @@
 {
-"name": "Sol - Venta por Catálogo",
-"short_name": "Sol Catálogos",
-"description": "Revistas y catálogos digitales de venta directa en Colombia.",
-"start_url": "./index.html",
-"display": "standalone",
-"background_color": "#fffbf7",
-"theme_color": "#f97316",
-"orientation": "portrait",
-"icons": [
-{
-"src": "data:image/svg+xml;utf8,",
-"sizes": "192x192",
-"type": "image/svg+xml",
-"purpose": "any maskable"
-},
-{
-"src": "data:image/svg+xml;utf8,",
-"sizes": "512x512",
-"type": "image/svg+xml",
-"purpose": "any maskable"
-}
-]
+  "name": "Sol - Venta por Catálogo",
+  "short_name": "Sol Catálogos",
+  "description": "Revistas y catálogos digitales de venta directa en Colombia.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fffbf7",
+  "theme_color": "#f97316",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><defs><linearGradient id='solBg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23fbbf24'/><stop offset='50%25' stop-color='%23f97316'/><stop offset='100%25' stop-color='%23f43f5e'/></linearGradient></defs><rect width='192' height='192' rx='44' fill='url(%23solBg)'/><circle cx='96' cy='96' r='42' fill='%23fef08a'/><circle cx='96' cy='96' r='34' fill='%23fde047'/><g stroke='%23fef08a' stroke-width='7' stroke-linecap='round'><line x1='96' y1='18' x2='96' y2='36'/><line x1='96' y1='156' x2='96' y2='174'/><line x1='18' y1='96' x2='36' y2='96'/><line x1='156' y1='96' x2='174' y2='96'/><line x1='41' y1='41' x2='54' y2='54'/><line x1='138' y1='138' x2='151' y2='151'/><line x1='41' y1='151' x2='54' y2='138'/><line x1='138' y1='54' x2='151' y2='41'/></g><g stroke='%23ea580c' stroke-width='4' stroke-linecap='round'><line x1='96' y1='45' x2='96' y2='51'/><line x1='96' y1='141' x2='96' y2='147'/><line x1='45' y1='96' x2='51' y2='96'/><line x1='141' y1='96' x2='147' y2='96'/><line x1='60' y1='60' x2='64' y2='64'/><line x1='128' y1='128' x2='132' y2='132'/><line x1='60' y1='132' x2='64' y2='128'/><line x1='128' y1='64' x2='132' y2='60'/></g></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><defs><linearGradient id='solBgL' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23fbbf24'/><stop offset='50%25' stop-color='%23f97316'/><stop offset='100%25' stop-color='%23f43f5e'/></linearGradient></defs><rect width='512' height='512' rx='116' fill='url(%23solBgL)'/><circle cx='256' cy='256' r='112' fill='%23fef08a'/><circle cx='256' cy='256' r='90' fill='%23fde047'/><g stroke='%23fef08a' stroke-width='18' stroke-linecap='round'><line x1='256' y1='48' x2='256' y2='96'/><line x1='256' y1='416' x2='256' y2='464'/><line x1='48' y1='256' x2='96' y2='256'/><line x1='416' y1='256' x2='464' y2='256'/><line x1='109' y1='109' x2='143' y2='143'/><line x1='369' y1='369' x2='403' y2='403'/><line x1='109' y1='403' x2='143' y2='369'/><line x1='369' y1='143' x2='403' y2='109'/></g><g stroke='%23ea580c' stroke-width='10' stroke-linecap='round'><line x1='256' y1='120' x2='256' y2='136'/><line x1='256' y1='376' x2='256' y2='392'/><line x1='120' y1='256' x2='136' y2='256'/><line x1='376' y1='256' x2='392' y2='256'/><line x1='160' y1='160' x2='171' y2='171'/><line x1='341' y1='341' x2='352' y2='352'/><line x1='160' y1='352' x2='171' y2='341'/><line x1='341' y1='171' x2='352' y2='160'/></g></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
 }
