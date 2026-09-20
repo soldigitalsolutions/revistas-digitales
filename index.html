@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sol - Venta por Catálogo</title>
 
+    <!-- Meta etiquetas Open Graph para tarjeta enriquecida en WhatsApp, Telegram y Redes -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sol - Venta por Catálogo">
+    <meta property="og:description" content="Explora los catálogos digitales actualizados de venta directa en Colombia. Haz tu pedido fácil y rápido por WhatsApp.">
+    <meta property="og:image" content="https://nuevasrevistas.com/revistas/co/carmel/2026_catalogo_14_2/1.webp">
+    <meta property="og:url" content="https://soldigitalsolutions.github.io/revistas-digitales/">
+    <meta property="og:site_name" content="Sol Catálogos">
+
+    <!-- Meta etiquetas Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sol - Venta por Catálogo">
+    <meta name="twitter:description" content="Catálogos digitales actualizados de venta directa en Colombia.">
+    <meta name="twitter:image" content="https://nuevasrevistas.com/revistas/co/carmel/2026_catalogo_14_2/1.webp">
+
     <meta name="theme-color" content="#f97316">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -98,9 +112,9 @@
 </head>
 <body class="min-h-screen flex flex-col sunset-glow">
 
-    <header class="bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 text-white py-12 px-4 shadow-lg relative overflow-hidden">
+    <header class="bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 text-white py-10 px-4 shadow-lg relative overflow-hidden">
         <div class="container mx-auto text-center flex flex-col items-center justify-center relative z-10">
-            <div class="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center animate-sun-pulse mb-3">
+            <div class="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center animate-sun-pulse mb-2">
                 <div class="w-full h-full animate-sun-spin flex items-center justify-center">
                     <svg viewBox="0 0 100 100" class="w-full h-full fill-amber-100">
                         <circle cx="50" cy="50" r="24" class="fill-yellow-300"></circle>
@@ -111,13 +125,13 @@
             </div>
 
             <h1 class="text-5xl md:text-7xl font-bold tracking-tight brand-title text-white drop-shadow-sm">Sol</h1>
-            <span class="text-xs font-bold tracking-[0.4em] uppercase mt-2.5 block text-orange-50">Venta por Catálogo</span>
+            <span class="text-xs font-bold tracking-[0.4em] uppercase mt-2 block text-orange-50">Venta por Catálogo</span>
         </div>
     </header>
 
-    <section class="container mx-auto px-4 py-8 max-w-4xl">
-        <div class="bg-white/80 border border-orange-100 rounded-3xl p-6 shadow-sm backdrop-blur-sm">
-            <h3 class="font-bold text-orange-900 mb-4 text-center text-sm md:text-base">¿Cómo hacer tu pedido?</h3>
+    <section class="container mx-auto px-4 py-6 max-w-4xl">
+        <div class="bg-white/80 border border-orange-100 rounded-3xl p-5 shadow-sm backdrop-blur-sm">
+            <h3 class="font-bold text-orange-900 mb-3 text-center text-xs md:text-base">¿Cómo hacer tu pedido?</h3>
             <div class="grid grid-cols-3 gap-2 text-center text-[10px] md:text-xs text-slate-600">
                 <div class="p-2"><i class="fas fa-mouse-pointer block text-orange-500 mb-1.5 text-base md:text-lg"></i> Elige catálogo</div>
                 <div class="p-2"><i class="fas fa-camera block text-orange-500 mb-1.5 text-base md:text-lg"></i> Toma captura</div>
@@ -176,9 +190,18 @@
                 <p id="paymentFlexDisplay" class="text-xs text-slate-500 mt-1">Pagos y envíos flexibles acordados con asesor.</p>
             </div>
 
-            <div class="mt-6">
-                <button id="toggleAdminBtn" class="text-xs text-slate-400 hover:text-orange-500 transition-colors font-medium bg-slate-100 px-4 py-2 rounded-full border border-slate-200/60 inline-flex items-center gap-2">
-                    <i class="fas fa-lock"></i> Gestionar Kiosco
+            <!-- Botón independiente de compartir (sin estar al lado de Gestionar Kiosco) -->
+            <div class="mt-6 flex justify-center">
+                <button onclick="shareKiosco()" class="text-xs text-orange-600 hover:text-orange-700 bg-orange-50 hover:bg-orange-100 transition-colors font-semibold px-5 py-2 rounded-full border border-orange-200/80 inline-flex items-center gap-2 shadow-sm active:scale-95">
+                    <i class="fas fa-share-nodes text-orange-500"></i>
+                    <span id="footerShareLabel">Compartir</span>
+                </button>
+            </div>
+
+            <!-- Botón de administración discreto, aislado al final -->
+            <div class="mt-5">
+                <button id="toggleAdminBtn" class="text-[11px] text-slate-400 hover:text-slate-600 transition-colors font-normal bg-transparent px-3 py-1 rounded-full border border-transparent hover:border-slate-200 inline-flex items-center gap-1.5 opacity-60 hover:opacity-100">
+                    <i class="fas fa-lock text-[10px]"></i> Gestionar Kiosco
                 </button>
             </div>
         </div>
@@ -195,10 +218,10 @@
         </div>
     </footer>
 
-    <!-- Botón Flotante sobrepuesto inteligente (Pastilla '¿Ayuda?' en Celulares, Extendido en PC) -->
+    <!-- Botón Flotante: Pastilla '¿Ayuda?' en Móviles, Extendido en Pantallas Mediana/PC -->
     <button id="helpFloatingBtn" class="fixed bottom-3 right-3 sm:bottom-4 sm:right-5 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-3.5 py-2 sm:px-4.5 sm:py-3 rounded-full shadow-2xl z-40 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 text-xs sm:text-sm border border-amber-300/40 group" title="Centro de Ayuda">
-        <i class="fas fa-sun text-yellow-200 text-base sm:text-base drop-shadow-sm group-hover:rotate-45 transition-transform duration-300"></i>
-        <span class="font-bold tracking-wide sm:hidden">¿Ayuda?</span>
+        <i class="fas fa-sun text-yellow-200 text-sm sm:text-base drop-shadow-sm group-hover:rotate-45 transition-transform duration-300"></i>
+        <span class="font-extrabold tracking-wide sm:hidden">¿Ayuda?</span>
         <span class="hidden sm:inline font-bold tracking-wide">¿Necesitas Ayuda?</span>
     </button>
 
@@ -224,6 +247,16 @@
                 <p class="font-bold text-orange-600 mb-1 flex items-center gap-1.5"><i class="fas fa-sun text-amber-500"></i> ¡Bienvenid@ a Sol Catálogos!</p>
                 Toca cualquier pregunta para conocer la respuesta:
             </div>
+
+            <button onclick="shareKiosco()" class="w-full text-left bg-gradient-to-r from-amber-500 to-orange-500 text-white p-3 rounded-2xl shadow-sm font-bold transition flex items-center justify-between">
+                <span class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-xl bg-white/20 flex items-center justify-center text-yellow-200 shrink-0">
+                        <i class="fas fa-share-nodes text-sm"></i>
+                    </div>
+                    <span id="modalShareLabel">Compartir con amigos</span>
+                </span>
+                <i class="fas fa-chevron-right text-orange-200 text-xs"></i>
+            </button>
 
             <button onclick="showHelpAnswer(4)" class="w-full text-left bg-white hover:bg-orange-50 border border-orange-200/80 p-3 rounded-2xl shadow-sm text-slate-800 font-medium transition flex items-center justify-between">
                 <span class="flex items-center gap-2.5">
@@ -456,6 +489,56 @@
         let deferredPrompt = null;
 
         const monthOrder = { 'ENE': 0, 'FEB': 1, 'MAR': 2, 'ABR': 3, 'MAY': 4, 'JUN': 5, 'JUL': 6, 'AGO': 7, 'SEP': 8, 'SET': 8, 'OCT': 9, 'NOV': 10, 'DIC': 11 };
+
+        // Detección de modo Standalone / App Instalada vs Navegador Web
+        function isStandaloneApp() {
+            return window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+        }
+
+        function updateShareLabels() {
+            const isApp = isStandaloneApp();
+            const footerLabel = document.getElementById('footerShareLabel');
+            const modalLabel = document.getElementById('modalShareLabel');
+            
+            if (footerLabel) {
+                footerLabel.textContent = isApp ? 'Compartir App' : 'Compartir Kiosco';
+            }
+            if (modalLabel) {
+                modalLabel.textContent = isApp ? 'Compartir esta App con amigos' : 'Compartir Kiosco con amigos';
+            }
+        }
+
+        /* Función nativa para compartir el Kiosco Sol en WhatsApp / Redes */
+        async function shareKiosco() {
+            const isApp = isStandaloneApp();
+            const shareData = {
+                title: 'Sol - Venta por Catálogo',
+                text: isApp 
+                    ? '☀️ ¡Abre los catálogos digitales interactivos en la App de Sol! Explora Yanbal, Natura, Avon, Carmel, Leonisa y más:' 
+                    : '☀️ ¡Mira los catálogos digitales de hoy! Explora productos de Yanbal, Natura, Avon, Carmel, Leonisa y más aquí:',
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    copyToClipboardFallback();
+                }
+            } else {
+                copyToClipboardFallback();
+            }
+        }
+
+        function copyToClipboardFallback() {
+            const tempInput = document.createElement('input');
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showNotification('¡Enlace del Kiosco copiado al portapapeles!', 'success');
+        }
 
         function isPendingDate(dateStr) {
             if (!dateStr || dateStr.trim() === '') return true;
@@ -780,6 +863,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             sortMagazinesByDeadline();
             updateAllViews();
+            updateShareLabels();
             if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(() => {});
             if (typeof Sortable !== 'undefined') {
                 Sortable.create(grid, {
