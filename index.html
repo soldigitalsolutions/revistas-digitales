@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sol - Venta por Catálogo</title>
 
-    <!-- Meta etiquetas Open Graph para WhatsApp, Telegram y Redes (Muestra la tarjeta limpia con sol-logo.png) -->
+    <!-- Meta etiquetas Open Graph para WhatsApp, Telegram y Redes -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Sol - Venta por Catálogo">
     <meta property="og:description" content="Catálogos digitales e interactivos de venta directa en Colombia.">
@@ -115,6 +115,7 @@
 </head>
 <body class="min-h-screen flex flex-col sunset-glow">
 
+    <!-- Encabezado Principal -->
     <header class="bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 text-white py-12 px-4 shadow-lg relative overflow-hidden">
         <div class="container mx-auto text-center flex flex-col items-center justify-center relative z-10">
             <div class="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center animate-sun-pulse mb-3">
@@ -132,6 +133,7 @@
         </div>
     </header>
 
+    <!-- Instrucciones Rápidas de Pedido -->
     <section class="container mx-auto px-4 py-8 max-w-4xl">
         <div class="bg-white/80 border border-orange-100 rounded-3xl p-6 shadow-sm backdrop-blur-sm">
             <h3 class="font-bold text-orange-900 mb-4 text-center text-sm md:text-base">¿Cómo hacer tu pedido?</h3>
@@ -143,6 +145,7 @@
         </div>
     </section>
 
+    <!-- Grid de Catálogos -->
     <main class="flex-grow container mx-auto px-4 pb-10 max-w-7xl">
         <div id="magazineGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6"></div>
         <div id="emptyState" class="hidden text-center py-20 text-orange-400 bg-white/50 rounded-3xl border border-dashed border-orange-200">
@@ -151,6 +154,7 @@
         </div>
     </main>
 
+    <!-- Banner de Instalación PWA -->
     <section id="pwaInstallBanner" class="container mx-auto px-4 pb-8 max-w-xl">
         <div class="bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 rounded-2xl p-3.5 text-white shadow-md flex items-center justify-between gap-3 border border-amber-300/30 animate-banner-gentle">
             <div class="flex items-center gap-3">
@@ -176,6 +180,7 @@
         </div>
     </section>
 
+    <!-- Pie de Página -->
     <footer class="bg-white border-t border-orange-100 pt-10 pb-0">
         <div class="brand-title text-4xl sm:text-5xl text-orange-500 font-bold mb-1 text-center">Sol</div>
         <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-6 text-center italic">Trayectoria y confianza desde 2004</p>
@@ -193,7 +198,7 @@
                 <p id="paymentFlexDisplay" class="text-xs text-slate-500 mt-1">Pagos y envíos flexibles acordados con asesor.</p>
             </div>
 
-            <!-- Botón para compartir y acceso discreto a administración -->
+            <!-- Botones de Compartir y Gestión -->
             <div class="mt-6 flex flex-col items-center gap-3">
                 <button onclick="shareKiosco()" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold px-6 py-2.5 rounded-full shadow-md text-xs transition-all hover:scale-105 active:scale-95 flex items-center gap-2 border border-amber-300/30">
                     <i class="fas fa-share-nodes text-yellow-200"></i>
@@ -206,6 +211,7 @@
             </div>
         </div>
 
+        <!-- Firma de la Marca -->
         <div class="bg-[#0f172a] text-slate-300 py-3.5 px-4 text-center border-t border-slate-800 relative overflow-hidden">
             <div class="absolute inset-0 opacity-5 pointer-events-none font-mono text-[9px] leading-tight select-none overflow-hidden">
                 01001100 01101111 01100111 01100111 00100000 01010000 01010111 01001100 01001110 00100000 01010011 01001111 01000100 0101001s
@@ -217,13 +223,14 @@
         </div>
     </footer>
 
-    <!-- Botón Flotante de Ayuda ajustado para no tapar la firma de EPamar -->
+    <!-- Botón Flotante de Ayuda Rápida -->
     <button id="helpFloatingBtn" class="fixed bottom-16 sm:bottom-6 right-3.5 sm:right-6 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-full shadow-2xl z-40 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 text-xs border border-amber-300/40" title="Centro de Ayuda">
         <i class="fas fa-sun text-yellow-200 text-sm drop-shadow-sm"></i>
         <span class="font-bold tracking-wide">¿Ayuda?</span>
     </button>
 
-    <div id="helpModalWindow" class="hidden fixed bottom-28 sm:bottom-20 right-3 left-3 sm:left-auto sm:right-6 sm:w-[380px] max-h-[75vh] bg-white border border-orange-100 rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden transition-all duration-300">
+    <!-- Centro de Ayuda con Asistente OS y Opción de Compartir -->
+    <div id="helpModalWindow" class="hidden fixed bottom-28 sm:bottom-20 right-3 left-3 sm:left-auto sm:right-6 sm:w-[390px] max-h-[80vh] bg-white border border-orange-100 rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden transition-all duration-300">
         <div class="bg-gradient-to-r from-amber-400 to-orange-500 p-4 text-white flex justify-between items-center shadow-md">
             <div class="flex items-center gap-2.5">
                 <div class="bg-white/20 p-2 rounded-xl flex items-center justify-center">
@@ -245,6 +252,7 @@
                 Toca cualquier pregunta para conocer la respuesta:
             </div>
 
+            <!-- Botón de Compartir en Menú de Ayuda -->
             <button onclick="shareKiosco()" class="w-full text-left bg-gradient-to-r from-amber-500 to-orange-500 text-white p-3 rounded-2xl shadow-sm font-bold transition flex items-center justify-between">
                 <span class="flex items-center gap-2.5">
                     <div class="w-7 h-7 rounded-xl bg-white/20 flex items-center justify-center text-yellow-200 shrink-0">
@@ -255,6 +263,7 @@
                 <i class="fas fa-chevron-right text-orange-200 text-xs"></i>
             </button>
 
+            <!-- Pregunta Instalación de la App -->
             <button onclick="showHelpAnswer(4)" class="w-full text-left bg-white hover:bg-orange-50 border border-orange-200/80 p-3 rounded-2xl shadow-sm text-slate-800 font-medium transition flex items-center justify-between">
                 <span class="flex items-center gap-2.5">
                     <div class="w-7 h-7 rounded-xl bg-orange-100 flex items-center justify-center text-orange-500 shrink-0">
@@ -264,19 +273,74 @@
                 </span>
                 <i class="fas fa-chevron-down text-orange-400 text-[10px]"></i>
             </button>
-            <div id="answer-4" class="hidden bg-orange-50/70 p-3.5 rounded-2xl text-slate-700 text-[11px] border border-orange-200 space-y-2.5 leading-relaxed">
-                <p class="font-semibold text-emerald-700 flex items-center gap-1.5">
-                    <i class="fas fa-shield-halved text-emerald-600"></i> ¡100% Segura y Oficial de Sol!
-                </p>
-                <p>Nuestra aplicación es ligera: no ocupa memoria de tu celular ni descarga archivos pesados.</p>
-                <div class="bg-white/90 p-2.5 rounded-xl border border-orange-100">
-                    <p class="font-medium text-slate-800 text-[11px] mb-0.5">En Celulares (Android / iPhone):</p>
-                    <p class="text-slate-600 text-[10px]">Toca los 3 puntos de tu navegador y selecciona <em>"Instalar aplicación"</em> o <em>"Agregar a pantalla principal"</em>.</p>
+            <div id="answer-4" class="hidden bg-orange-50/70 p-3.5 rounded-2xl text-slate-700 text-[11px] border border-orange-200 space-y-3 leading-relaxed">
+                
+                <div id="detectedDeviceBadge" class="bg-white p-2.5 rounded-xl border border-orange-200/80 text-[11px] font-medium text-slate-700 flex items-center gap-2 shadow-xs">
+                    <i class="fas fa-circle-notch fa-spin text-orange-500"></i> Detectando tu dispositivo...
                 </div>
-                <div id="helpInstallTriggerBox" class="hidden pt-1 flex justify-center">
-                    <button id="pwaTriggerBtnInner" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-extrabold px-4 py-2 rounded-xl text-xs shadow flex items-center gap-2">
-                        <i class="fas fa-arrow-down"></i> Instalar ahora en este dispositivo
+
+                <!-- Toggle Selector de Dispositivo -->
+                <div class="flex gap-1 bg-orange-100/60 p-1 rounded-xl">
+                    <button id="tab-btn-ios" onclick="showGuide('ios')" class="flex-1 py-1 px-1.5 rounded-lg text-[10px] font-bold text-slate-600 transition flex items-center justify-center gap-1">
+                        <i class="fab fa-apple"></i> iPhone
                     </button>
+                    <button id="tab-btn-android" onclick="showGuide('android')" class="flex-1 py-1 px-1.5 rounded-lg text-[10px] font-bold text-slate-600 transition flex items-center justify-center gap-1">
+                        <i class="fab fa-android text-emerald-600"></i> Android
+                    </button>
+                    <button id="tab-btn-desktop" onclick="showGuide('desktop')" class="flex-1 py-1 px-1.5 rounded-lg text-[10px] font-bold text-slate-600 transition flex items-center justify-center gap-1">
+                        <i class="fas fa-desktop text-sky-600"></i> PC
+                    </button>
+                </div>
+
+                <!-- Guía iPhone / iPad -->
+                <div id="guide-ios" class="hidden bg-white/95 p-3 rounded-2xl border border-slate-200 space-y-2.5 text-slate-700">
+                    <div class="font-bold text-slate-900 text-xs flex items-center gap-1.5 border-b border-slate-100 pb-1.5">
+                        <i class="fab fa-apple text-base"></i> Pasos para iPhone (Safari)
+                    </div>
+                    <div class="flex items-start gap-2 text-[10px]">
+                        <span class="w-5 h-5 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold shrink-0">1</span>
+                        <p>Toca el icono de <strong>Compartir</strong> <i class="fas fa-arrow-up-from-bracket text-sky-600"></i> en la barra inferior de Safari.</p>
+                    </div>
+                    <div class="flex items-start gap-2 text-[10px]">
+                        <span class="w-5 h-5 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold shrink-0">2</span>
+                        <p>Desliza las opciones y selecciona <strong>"Agregar a inicio"</strong> <i class="fas fa-square-plus text-slate-800"></i>.</p>
+                    </div>
+                    <div class="flex items-start gap-2 text-[10px]">
+                        <span class="w-5 h-5 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold shrink-0">3</span>
+                        <p>Toca <strong>"Agregar"</strong> arriba a la derecha. ¡Listo!</p>
+                    </div>
+                </div>
+
+                <!-- Guía Android -->
+                <div id="guide-android" class="hidden bg-white/95 p-3 rounded-2xl border border-slate-200 space-y-2.5 text-slate-700">
+                    <div class="font-bold text-slate-900 text-xs flex items-center gap-1.5 border-b border-slate-100 pb-1.5">
+                        <i class="fab fa-android text-emerald-600 text-base"></i> Pasos para Android (Chrome)
+                    </div>
+                    <div class="flex items-start gap-2 text-[10px]">
+                        <span class="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold shrink-0">1</span>
+                        <p>Toca los <strong>3 puntos</strong> <i class="fas fa-ellipsis-vertical text-slate-700"></i> arriba a la derecha del navegador.</p>
+                    </div>
+                    <div class="flex items-start gap-2 text-[10px]">
+                        <span class="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold shrink-0">2</span>
+                        <p>Elige <strong>"Instalar aplicación"</strong> o <strong>"Agregar a pantalla principal"</strong>.</p>
+                    </div>
+                    <div id="helpInstallTriggerBox" class="hidden pt-1 flex justify-center">
+                        <button id="pwaTriggerBtnInner" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-extrabold px-3.5 py-2 rounded-xl text-xs shadow flex items-center gap-2">
+                            <i class="fas fa-download"></i> Instalar directamente en 1 Clic
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Guía Computador -->
+                <div id="guide-desktop" class="hidden bg-white/95 p-3 rounded-2xl border border-slate-200 space-y-2.5 text-slate-700">
+                    <div class="font-bold text-slate-900 text-xs flex items-center gap-1.5 border-b border-slate-100 pb-1.5">
+                        <i class="fas fa-desktop text-sky-600 text-base"></i> Pasos para Computador / PC
+                    </div>
+                    <p class="text-[10px]">Busca el ícono de <strong>Instalar App</strong> <i class="fas fa-download text-sky-600"></i> a la derecha en la barra de direcciones de Chrome o Edge y haz clic.</p>
+                </div>
+
+                <div class="text-[10px] text-slate-500 bg-white/60 p-2 rounded-xl border border-orange-100 text-center">
+                    <i class="fas fa-shield-check text-emerald-600"></i> App ligera, libre de virus y no ocupa memoria.
                 </div>
             </div>
 
@@ -292,7 +356,7 @@
             <div id="answer-1" class="hidden bg-orange-50/60 p-3 rounded-2xl text-slate-600 text-[11px] border border-orange-100 space-y-1">
                 <p>1. Entra a la revista que te guste haciendo clic en su portada.</p>
                 <p>2. Toma captura de pantalla a los productos que deseas.</p>
-                <p>3. Envía tus capturas directamente a tu asesora asignada.</p>
+                <p>3. Envía tus capturas directamente a tu asesor asignado.</p>
             </div>
 
             <button onclick="showHelpAnswer(2)" class="w-full text-left bg-white hover:bg-orange-50 border border-orange-100 p-3 rounded-2xl shadow-sm text-slate-700 font-medium transition flex items-center justify-between">
@@ -305,7 +369,7 @@
                 <i class="fas fa-chevron-down text-orange-400 text-[10px]"></i>
             </button>
             <div id="answer-2" class="hidden bg-orange-50/60 p-3 rounded-2xl text-slate-600 text-[11px] border border-orange-100">
-                Indica que el plazo de esa edición ya venció. Solo debes esperar a que tu asesora publique la nueva campaña y el catálogo se habilitará de nuevo automáticamente.
+                Indica que el plazo de esa edición ya venció. Solo debes esperar a que tu asesor publique la nueva campaña y el catálogo se habilitará de nuevo automáticamente.
             </div>
 
             <button onclick="showHelpAnswer(3)" class="w-full text-left bg-white hover:bg-orange-50 border border-orange-100 p-3 rounded-2xl shadow-sm text-slate-700 font-medium transition flex items-center justify-between">
@@ -319,7 +383,7 @@
             </button>
             <div id="answer-3" class="hidden bg-orange-50/60 p-3 rounded-2xl text-slate-600 text-[11px] border border-orange-100 space-y-1">
                 <p>• Puedes cancelar mediante transferencias (Nequi / Llave / Bre-B).</p>
-                <p>• Los plazos de pago, entregas y formas de envío son acordados directamente con tu asesora.</p>
+                <p>• Los plazos de pago, entregas y formas de envío son acordados directamente con tu asesor.</p>
             </div>
         </div>
     </div>
@@ -449,6 +513,7 @@
         </div>
     </div>
 
+    <!-- Modal de Confirmación para Borrar -->
     <div id="confirmModal" class="hidden fixed inset-0 bg-slate-950/85 backdrop-blur-sm z-[80] flex items-center justify-center p-4 transition-opacity duration-200 opacity-0">
         <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 max-w-sm w-full shadow-2xl text-center text-white">
             <h4 class="text-lg font-bold mb-2">¿Eliminar catálogo?</h4>
@@ -535,6 +600,42 @@
             document.execCommand('copy');
             document.body.removeChild(tempInput);
             showNotification('¡Enlace copiado al portapapeles!', 'success');
+        }
+
+        function detectOSAndGuide() {
+            const ua = navigator.userAgent || navigator.vendor || window.opera;
+            const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+            const isAndroid = /android/i.test(ua);
+            const detectedBadge = document.getElementById('detectedDeviceBadge');
+
+            if (isIOS) {
+                if (detectedBadge) detectedBadge.innerHTML = '<i class="fab fa-apple text-slate-800 text-sm"></i> Tu dispositivo: <strong>iPhone / iPad</strong>';
+                showGuide('ios');
+            } else if (isAndroid) {
+                if (detectedBadge) detectedBadge.innerHTML = '<i class="fab fa-android text-emerald-600 text-sm"></i> Tu dispositivo: <strong>Android</strong>';
+                showGuide('android');
+            } else {
+                if (detectedBadge) detectedBadge.innerHTML = '<i class="fas fa-desktop text-sky-600 text-sm"></i> Tu dispositivo: <strong>Computador / Laptop</strong>';
+                showGuide('desktop');
+            }
+        }
+
+        function showGuide(type) {
+            ['ios', 'android', 'desktop'].forEach(t => {
+                const el = document.getElementById(`guide-${t}`);
+                const btn = document.getElementById(`tab-btn-${t}`);
+                if (el) {
+                    if (t === type) el.classList.remove('hidden');
+                    else el.classList.add('hidden');
+                }
+                if (btn) {
+                    if (t === type) {
+                        btn.className = "flex-1 py-1 px-1.5 rounded-lg text-[10px] font-bold bg-orange-500 text-white shadow-sm transition flex items-center justify-center gap-1";
+                    } else {
+                        btn.className = "flex-1 py-1 px-1.5 rounded-lg text-[10px] font-bold text-slate-600 bg-white/70 hover:bg-white transition flex items-center justify-center gap-1";
+                    }
+                }
+            });
         }
 
         function isPendingDate(dateStr) {
@@ -860,6 +961,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             sortMagazinesByDeadline();
             updateAllViews();
+            detectOSAndGuide();
+
             if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(() => {});
             if (typeof Sortable !== 'undefined') {
                 Sortable.create(grid, {
