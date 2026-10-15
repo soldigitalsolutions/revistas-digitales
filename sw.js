@@ -1,8 +1,9 @@
-const CACHE_NAME = 'sol-catalogos-v2';
+const CACHE_NAME = 'sol-catalogos-v3';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './manifest.json',
+  './sol-logo.png',
   'https://cdn.tailwindcss.com',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'
 ];
@@ -47,7 +48,7 @@ self.addEventListener('fetch', (event) => {
       .catch(() => {
         return caches.match(event.request).then((cachedResponse) => {
           return cachedResponse || caches.match('./index.html');
-        });
+        })
       })
   );
 });
