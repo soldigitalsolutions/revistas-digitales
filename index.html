@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="Catálogos digitales e interactivos de venta directa en Colombia.">
     <meta name="twitter:image" content="https://soldigitalsolutions.github.io/revistas-digitales/banner-social.png">
 
-    <!-- Iconos PWA y Favicon -->
+    <!-- Íconos PWA y Favicon -->
     <link rel="icon" type="image/png" href="./sol-logo.png">
     <link rel="apple-touch-icon" href="./sol-logo.png">
 
@@ -162,7 +162,7 @@
         </div>
     </main>
 
-    <!-- Banner PWA -->
+    <!-- Banner de Instalación PWA -->
     <section id="pwaInstallBanner" class="container mx-auto px-4 pb-8 max-w-xl">
         <div class="bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 rounded-2xl p-3.5 text-white shadow-md flex items-center justify-between gap-3 border border-amber-300/30 animate-banner-gentle">
             <div class="flex items-center gap-3">
@@ -227,6 +227,169 @@
             </div>
         </div>
     </footer>
+
+    <!-- Botón Flotante de Ayuda Rápida -->
+    <button id="helpFloatingBtn" class="fixed bottom-16 sm:bottom-6 right-3.5 sm:right-6 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-full shadow-2xl z-40 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 text-xs border border-amber-300/40" title="Centro de Ayuda">
+        <i class="fas fa-sun text-yellow-200 text-sm drop-shadow-sm"></i>
+        <span class="font-bold tracking-wide">¿Ayuda?</span>
+    </button>
+
+    <!-- Centro de Ayuda -->
+    <div id="helpModalWindow" class="hidden fixed bottom-28 sm:bottom-20 right-3 left-3 sm:left-auto sm:right-6 sm:w-[390px] max-h-[80vh] bg-white border border-orange-100 rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden transition-all duration-300">
+        <div class="bg-gradient-to-r from-amber-400 to-orange-500 p-4 text-white flex justify-between items-center shadow-md">
+            <div class="flex items-center gap-2.5">
+                <div class="bg-white/20 p-2 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-sun text-yellow-200 text-lg"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm">Centro de Ayuda Sol</h4>
+                    <p class="text-[9px] text-orange-100">Información sobre pedidos, pagos y catálogo</p>
+                </div>
+            </div>
+            <button id="closeHelpModalBtn" class="text-white hover:text-orange-200 transition-colors p-1">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+
+        <div class="p-4 overflow-y-auto space-y-3 bg-orange-50/10 text-xs hide-scrollbar">
+            <div class="bg-white border border-orange-50 p-3.5 rounded-2xl text-slate-700 shadow-sm">
+                <p class="font-bold text-orange-600 mb-1 flex items-center gap-1.5"><i class="fas fa-sun text-amber-500"></i> ¡Bienvenid@ a Sol Catálogos!</p>
+                Toca cualquier pregunta para conocer la respuesta:
+            </div>
+
+            <!-- Botón Compartir Kiosco en Ayuda -->
+            <button onclick="shareKiosco()" class="w-full text-left bg-gradient-to-r from-amber-500 to-orange-500 text-white p-3 rounded-2xl shadow-sm font-bold transition flex items-center justify-between">
+                <span class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-xl bg-white/20 flex items-center justify-center text-yellow-200 shrink-0">
+                        <i class="fas fa-share-nodes text-sm"></i>
+                    </div>
+                    <span id="modalShareLabel">Compartir Kiosco con amigos</span>
+                </span>
+                <i class="fas fa-chevron-right text-orange-200 text-xs"></i>
+            </button>
+
+            <!-- Pregunta Instalación de la App -->
+            <button onclick="showHelpAnswer(4)" class="w-full text-left bg-white hover:bg-orange-50 border border-orange-200/80 p-3 rounded-2xl shadow-sm text-slate-800 font-medium transition flex items-center justify-between">
+                <span class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-xl bg-orange-100 flex items-center justify-center text-orange-500 shrink-0">
+                        <i class="fas fa-mobile-screen-button text-sm"></i>
+                    </div>
+                    <span>¿Cómo tener la App en tu celular o PC?</span>
+                </span>
+                <i class="fas fa-chevron-down text-orange-400 text-[10px]"></i>
+            </button>
+            <div id="answer-4" class="hidden bg-orange-50/70 p-3.5 rounded-2xl text-slate-700 text-[11px] border border-orange-200 space-y-3 leading-relaxed">
+                
+                <div id="detectedDeviceBadge" class="bg-white p-2.5 rounded-xl border border-orange-200/80 text-[11px] font-medium text-slate-700 flex items-center gap-2 shadow-xs"><i class="fas fa-desktop text-sky-600 text-sm"></i> Tu dispositivo: <strong>Computador / Laptop</strong></div>
+
+                <!-- Toggle Selector de Dispositivo -->
+                <div class="flex gap-1 bg-orange-100/60 p-1 rounded-xl">
+                    <button id="tab-btn-ios" onclick="showGuide('ios')" class="flex-1 py-1 px-1.5 rounded-lg text-[10px] font-bold text-slate-600 bg-white/70 hover:bg-white transition flex items-center justify-center gap-1">
+                        <i class="fab fa-apple"></i> iPhone
+                    </button>
+                    <button id="tab-btn-android" onclick="showGuide('android')" class="flex-1 py-1 px-1.5 rounded-lg text-[10px] font-bold text-slate-600 bg-white/70 hover:bg-white transition flex items-center justify-center gap-1">
+                        <i class="fab fa-android text-emerald-600"></i> Android
+                    </button>
+                    <button id="tab-btn-desktop" onclick="showGuide('desktop')" class="flex-1 py-1 px-1.5 rounded-lg text-[10px] font-bold bg-orange-500 text-white shadow-sm transition flex items-center justify-center gap-1">
+                        <i class="fas fa-desktop text-sky-600"></i> PC
+                    </button>
+                </div>
+
+                <!-- Guía iPhone / iPad -->
+                <div id="guide-ios" class="hidden bg-white/95 p-3 rounded-2xl border border-slate-200 space-y-2.5 text-slate-700">
+                    <div class="font-bold text-slate-900 text-xs flex items-center gap-1.5 border-b border-slate-100 pb-1.5">
+                        <i class="fab fa-apple text-base"></i> Pasos para iPhone (Safari)
+                    </div>
+                    <div class="flex items-start gap-2 text-[10px]">
+                        <span class="w-5 h-5 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold shrink-0">1</span>
+                        <p>Toca el icono de <strong>Compartir</strong> <i class="fas fa-arrow-up-from-bracket text-sky-600"></i> en la barra inferior de Safari.</p>
+                    </div>
+                    <div class="flex items-start gap-2 text-[10px]">
+                        <span class="w-5 h-5 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold shrink-0">2</span>
+                        <p>Desliza las opciones y selecciona <strong>"Agregar a inicio"</strong> <i class="fas fa-square-plus text-slate-800"></i>.</p>
+                    </div>
+                    <div class="flex items-start gap-2 text-[10px]">
+                        <span class="w-5 h-5 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold shrink-0">3</span>
+                        <p>Toca <strong>"Agregar"</strong> arriba a la derecha. ¡Listo!</p>
+                    </div>
+                </div>
+
+                <!-- Guía Android -->
+                <div id="guide-android" class="hidden bg-white/95 p-3 rounded-2xl border border-slate-200 space-y-2.5 text-slate-700">
+                    <div class="font-bold text-slate-900 text-xs flex items-center gap-1.5 border-b border-slate-100 pb-1.5">
+                        <i class="fab fa-android text-emerald-600 text-base"></i> Pasos para Android (Chrome)
+                    </div>
+                    <div class="flex items-start gap-2 text-[10px]">
+                        <span class="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold shrink-0">1</span>
+                        <p>Toca los <strong>3 puntos</strong> <i class="fas fa-ellipsis-vertical text-slate-700"></i> arriba a la derecha del navegador.</p>
+                    </div>
+                    <div class="flex items-start gap-2 text-[10px]">
+                        <span class="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold shrink-0">2</span>
+                        <p>Elige <strong>"Instalar aplicación"</strong> o <strong>"Agregar a pantalla principal"</strong>.</p>
+                    </div>
+                    <div id="helpInstallTriggerBox" class="hidden pt-1 flex justify-center">
+                        <button id="pwaTriggerBtnInner" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-extrabold px-3.5 py-2 rounded-xl text-xs shadow flex items-center gap-2">
+                            <i class="fas fa-download"></i> Instalar directamente en 1 Clic
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Guía Computador -->
+                <div id="guide-desktop" class="bg-white/95 p-3 rounded-2xl border border-slate-200 space-y-2.5 text-slate-700">
+                    <div class="font-bold text-slate-900 text-xs flex items-center gap-1.5 border-b border-slate-100 pb-1.5">
+                        <i class="fas fa-desktop text-sky-600 text-base"></i> Pasos para Computador / PC
+                    </div>
+                    <p class="text-[10px]">Busca el ícono de <strong>Instalar App</strong> <i class="fas fa-download text-sky-600"></i> a la derecha en la barra de direcciones de Chrome o Edge y haz clic.</p>
+                </div>
+
+                <div class="text-[10px] text-slate-500 bg-white/60 p-2 rounded-xl border border-orange-100 text-center">
+                    <i class="fas fa-shield-check text-emerald-600"></i> App ligera, libre de virus y no ocupa memoria.
+                </div>
+            </div>
+
+            <button onclick="showHelpAnswer(1)" class="w-full text-left bg-white hover:bg-orange-50 border border-orange-100 p-3 rounded-2xl shadow-sm text-slate-700 font-medium transition flex items-center justify-between">
+                <span class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-xl bg-orange-100 flex items-center justify-center text-orange-500 shrink-0">
+                        <i class="fas fa-bag-shopping text-sm"></i>
+                    </div>
+                    <span>¿Cómo hago y envío mi pedido?</span>
+                </span>
+                <i class="fas fa-chevron-down text-orange-400 text-[10px]"></i>
+            </button>
+            <div id="answer-1" class="hidden bg-orange-50/60 p-3 rounded-2xl text-slate-600 text-[11px] border border-orange-100 space-y-1">
+                <p>1. Entra a la revista que te guste haciendo clic en su portada.</p>
+                <p>2. Toma captura de pantalla a los productos que deseas.</p>
+                <p>3. Envía tus capturas directamente a tu asesor asignado.</p>
+            </div>
+
+            <button onclick="showHelpAnswer(2)" class="w-full text-left bg-white hover:bg-orange-50 border border-orange-100 p-3 rounded-2xl shadow-sm text-slate-700 font-medium transition flex items-center justify-between">
+                <span class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-xl bg-orange-100 flex items-center justify-center text-orange-500 shrink-0">
+                        <i class="fas fa-clock text-sm"></i>
+                    </div>
+                    <span>¿Qué pasa si una campaña dice "Cerrada"?</span>
+                </span>
+                <i class="fas fa-chevron-down text-orange-400 text-[10px]"></i>
+            </button>
+            <div id="answer-2" class="hidden bg-orange-50/60 p-3 rounded-2xl text-slate-600 text-[11px] border border-orange-100">
+                Indica que el plazo de esa edición ya venció. Solo debes esperar a que tu asesor publique la nueva campaña y el catálogo se habilitará de nuevo automáticamente.
+            </div>
+
+            <button onclick="showHelpAnswer(3)" class="w-full text-left bg-white hover:bg-orange-50 border border-orange-100 p-3 rounded-2xl shadow-sm text-slate-700 font-medium transition flex items-center justify-between">
+                <span class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-xl bg-orange-100 flex items-center justify-center text-orange-500 shrink-0">
+                        <i class="fas fa-credit-card text-sm"></i>
+                    </div>
+                    <span>¿Cómo funcionan los pagos y envíos?</span>
+                </span>
+                <i class="fas fa-chevron-down text-orange-400 text-[10px]"></i>
+            </button>
+            <div id="answer-3" class="hidden bg-orange-50/60 p-3 rounded-2xl text-slate-600 text-[11px] border border-orange-100 space-y-1">
+                <p>• Puedes cancelar mediante transferencias (Nequi / Llave / Bre-B).</p>
+                <p>• Los plazos de pago, entregas y formas de envío son acordados directamente con tu asesor.</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal de Contraseña -->
     <div id="passwordModal" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-[90] flex items-center justify-center p-4 opacity-0">
@@ -355,13 +518,25 @@
         </div>
     </div>
 
-    <!-- Script Principal JavaScript -->
+    <!-- Modal de Confirmación para Borrar -->
+    <div id="confirmModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-sm z-[80] flex items-center justify-center p-4 transition-opacity duration-200 opacity-0 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 max-w-sm w-full shadow-2xl text-center text-white">
+            <h4 class="text-lg font-bold mb-2">¿Eliminar catálogo?</h4>
+            <p class="text-slate-400 text-xs mb-6">Esta acción quitará a <span id="confirmTargetName" class="font-semibold text-orange-400"></span>.</p>
+            <div class="flex gap-3 justify-center">
+                <button id="cancelConfirmBtn" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-2 px-5 rounded-xl text-xs">Cancelar</button>
+                <button id="acceptConfirmBtn" class="bg-rose-600 hover:bg-rose-500 text-white font-semibold py-2 px-5 rounded-xl text-xs">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Principal con Funciones de Compartir Restablecidas -->
     <script>
         const defaultMagazines = [
           {
             "id": 6,
             "name": "Natura",
-            "deadline": "17 OCT",
+            "deadline": "27 OCT",
             "bg": "bg-purple-50",
             "link": "https://encurtador.naturaavon.com/efCizE9",
             "cover": "https://co.natura.digital-catalogue.com/co/2026/15/revista/ciclo-15/view/common/data/0001.webp?preventCache=1790631520__v1.0.1__t2.7.1"
@@ -369,7 +544,7 @@
           {
             "id": 7,
             "name": "Avon",
-            "deadline": "17 OCT",
+            "deadline": "27 OCT",
             "bg": "bg-pink-50",
             "link": "https://short.natura.com/FQF_Ows",
             "cover": "https://co.natura-avon.digital-catalogue.com/co/2026/15/revista/avon-ciclo-15/view/common/data/0001.webp?preventCache=1790627949__v1.0.1__t2.7.1"
@@ -377,7 +552,7 @@
           {
             "id": 5,
             "name": "Carmel",
-            "deadline": "19 OCT",
+            "deadline": "29 OCT",
             "bg": "bg-purple-50",
             "link": "https://catalogo.carmel.com.co/2026c15/c15ed01-2026/?page=1",
             "cover": "https://nuevasrevistas.com/revistas/co/carmel/2026_catalogo_15/1.webp"
@@ -385,7 +560,7 @@
           {
             "id": 4,
             "name": "Loguin",
-            "deadline": "19 OCT",
+            "deadline": "29 OCT",
             "bg": "bg-pink-50",
             "link": "https://catalogo.loguin.com.co/2026c15/c15ed01-2026/?page=1",
             "cover": "https://nuevasrevistas.com/revistas/co/loguin/2026_catalogo_15/1.webp"
@@ -393,7 +568,7 @@
           {
             "id": 2,
             "name": "Pacifika",
-            "deadline": "19 OCT",
+            "deadline": "29 OCT",
             "bg": "bg-purple-50",
             "link": "https://catalogo.pacifika.com.co/2026c15/c15ed01-2026/?page=1",
             "cover": "https://nuevasrevistas.com/revistas/co/pacifika/2026_catalogo_15/1.webp"
@@ -401,7 +576,7 @@
           {
             "id": 3,
             "name": "Leonisa",
-            "deadline": "24 OCT",
+            "deadline": "04 NOV",
             "bg": "bg-pink-50",
             "link": "https://catalogo.negocioleonisa.com/CO/CAT/c16/LEONISA_CO16_2026_PRINCIPAL/?page=1",
             "cover": "https://leonisa-catalogs-assets-pro.s3.amazonaws.com/multipanel/images/2026/09/30/ECT80Oa8Ci448foGj8LJp1i2slzs5744awxjVSJM.png"
@@ -409,7 +584,7 @@
           {
             "id": 1789918929170,
             "name": "LEONISA COMPLEMENTO",
-            "deadline": "24 OCT",
+            "deadline": "04 NOV",
             "bg": "bg-purple-50",
             "link": "https://catalogo.negocioleonisa.com/CO/CAT/c16/LEONISA_CO16_2026_COMPLEMENTOS/?page=1",
             "cover": "https://leonisa-catalogs-assets-pro.s3.amazonaws.com/multipanel/images/2026/09/10/tEnP83OtmbAK1rFedH2jUzEXtIlhiDOJb0ClFrVP.png"
@@ -417,7 +592,7 @@
           {
             "id": 1791332560153,
             "name": "LEONISA DENIM",
-            "deadline": "24 OCT",
+            "deadline": "04 NOV",
             "bg": "bg-pink-50",
             "link": "https://catalogo.negocioleonisa.com/CO/CAT/c16/LEONISA_CO16_2026_DENIM/?page=1",
             "cover": "https://leonisa-catalogs-assets-pro.s3.amazonaws.com/multipanel/images/2026/09/01/0IdUGla46TRbeLK3fZThbbCvDz2tSMLsmnKGsAD2.png"
@@ -425,7 +600,7 @@
           {
             "id": 1791332596906,
             "name": "LEONISA PREVENTA NAVIDAD",
-            "deadline": "24 OCT",
+            "deadline": "04 NOV",
             "bg": "bg-purple-50",
             "link": "https://catalogo.negocioleonisa.com/CO/CAT/c16/LEONISA_CO16_2026_PREVENTA/?page=1",
             "cover": "https://leonisa-catalogs-assets-pro.s3.amazonaws.com/multipanel/images/2026/09/10/6sgMpuHLS8dbqS6nFLDuzf9dq7RQeJxq3mYxEiGh.png"
@@ -433,7 +608,7 @@
           {
             "id": 11,
             "name": "L'Bel",
-            "deadline": "26 OCT",
+            "deadline": "08 NOV",
             "bg": "bg-pink-50",
             "link": "https://catalogo.somosbelcorp.com/co/SolCastrillo1/lbel/pages/1?next_campaign=true",
             "cover": "https://mirarevistas.com.co/images/lbel/16_26/1.webp"
@@ -441,7 +616,7 @@
           {
             "id": 10,
             "name": "Cyzone",
-            "deadline": "26 OCT",
+            "deadline": "08 NOV",
             "bg": "bg-purple-50",
             "link": "https://catalogo.somosbelcorp.com/co/SolCastrillo1/cyzone/pages/1?next_campaign=true",
             "cover": "https://nuevasrevistas.com/revistas/co/cyzone/2026_catalogo_16/1.webp"
@@ -449,7 +624,7 @@
           {
             "id": 9,
             "name": "Esika",
-            "deadline": "26 OCT",
+            "deadline": "08 NOV",
             "bg": "bg-pink-50",
             "link": "https://catalogo.somosbelcorp.com/co/SolCastrillo1/esika/pages/1?next_campaign=true",
             "cover": "https://nuevasrevistas.com/revistas/co/esika/2026_catalogo_16/1.webp"
@@ -473,8 +648,100 @@
 
         let magazines = defaultMagazines;
         let settings = defaultSettings;
+        let deleteTargetId = null;
+        let deferredPrompt = null;
 
         const monthOrder = { 'ENE': 0, 'FEB': 1, 'MAR': 2, 'ABR': 3, 'MAY': 4, 'JUN': 5, 'JUL': 6, 'AGO': 7, 'SEP': 8, 'SET': 8, 'OCT': 9, 'NOV': 10, 'DIC': 11 };
+
+        // --- SISTEMA DE COMPARTIR Y ADAPTACIÓN PWA ---
+        function isStandaloneApp() {
+            return window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+        }
+
+        function updateShareLabels() {
+            const isApp = isStandaloneApp();
+            const modalLabel = document.getElementById('modalShareLabel');
+            const footerLabel = document.getElementById('footerShareBtnText');
+            
+            if (modalLabel) {
+                modalLabel.textContent = isApp ? 'Compartir esta App con amigos' : 'Compartir Kiosco con amigos';
+            }
+            if (footerLabel) {
+                footerLabel.textContent = isApp ? 'Compartir App' : 'Compartir Kiosco';
+            }
+        }
+
+        async function shareKiosco() {
+            const isApp = isStandaloneApp();
+            const cleanUrl = window.location.origin + window.location.pathname.replace(/index\.html$/, '');
+            
+            const shareData = {
+                title: 'Sol - Venta por Catálogo',
+                text: isApp 
+                    ? '☀️ ¡Te comparto la App de Sol Catálogos!' 
+                    : '☀️ ¡Mira los catálogos digitales interactivos de Sol aquí:',
+                url: cleanUrl
+            };
+
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    if (err.name !== 'AbortError') {
+                        copyToClipboardFallback(cleanUrl);
+                    }
+                }
+            } else {
+                copyToClipboardFallback(cleanUrl);
+            }
+        }
+
+        function copyToClipboardFallback(targetUrl) {
+            const urlToCopy = targetUrl || (window.location.origin + window.location.pathname.replace(/index\.html$/, ''));
+            const tempInput = document.createElement('input');
+            tempInput.value = urlToCopy;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showNotification('¡Enlace copiado al portapapeles!', 'success');
+        }
+
+        function detectOSAndGuide() {
+            const ua = navigator.userAgent || navigator.vendor || window.opera;
+            const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+            const isAndroid = /android/i.test(ua);
+            const detectedBadge = document.getElementById('detectedDeviceBadge');
+
+            if (isIOS) {
+                if (detectedBadge) detectedBadge.innerHTML = '<i class="fab fa-apple text-slate-800 text-sm"></i> Tu dispositivo: <strong>iPhone / iPad</strong>';
+                showGuide('ios');
+            } else if (isAndroid) {
+                if (detectedBadge) detectedBadge.innerHTML = '<i class="fab fa-android text-emerald-600 text-sm"></i> Tu dispositivo: <strong>Android</strong>';
+                showGuide('android');
+            } else {
+                if (detectedBadge) detectedBadge.innerHTML = '<i class="fas fa-desktop text-sky-600 text-sm"></i> Tu dispositivo: <strong>Computador / Laptop</strong>';
+                showGuide('desktop');
+            }
+        }
+
+        function showGuide(type) {
+            ['ios', 'android', 'desktop'].forEach(t => {
+                const el = document.getElementById(`guide-${t}`);
+                const btn = document.getElementById(`tab-btn-${t}`);
+                if (el) {
+                    if (t === type) el.classList.remove('hidden');
+                    else el.classList.add('hidden');
+                }
+                if (btn) {
+                    if (t === type) {
+                        btn.className = "flex-1 py-1 px-1.5 rounded-lg text-[10px] font-bold bg-orange-500 text-white shadow-sm transition flex items-center justify-center gap-1";
+                    } else {
+                        btn.className = "flex-1 py-1 px-1.5 rounded-lg text-[10px] font-bold text-slate-600 bg-white/70 hover:bg-white transition flex items-center justify-center gap-1";
+                    }
+                }
+            });
+        }
 
         function isPendingDate(dateStr) {
             if (!dateStr || dateStr.trim() === '') return true;
@@ -498,19 +765,86 @@
             return d ? new Date() > d : false;
         }
 
-        function renderCatalog() {
-            const grid = document.getElementById('magazineGrid');
-            const emptyState = document.getElementById('emptyState');
-            if (!grid) return;
+        function parseDeadlineScore(dateStr) {
+            if (isCampaignExpired(dateStr)) return 90000000000000 + parseDeadlineDate(dateStr).getTime();
+            if (isPendingDate(dateStr)) return 80000000000000;
+            const d = parseDeadlineDate(dateStr);
+            return d ? d.getTime() : 80000000000000;
+        }
 
+        function sortMagazinesByDeadline() {
+            magazines.sort((a, b) => parseDeadlineScore(a.deadline) - parseDeadlineScore(b.deadline));
+            magazines.forEach((mag, idx) => mag.bg = idx % 2 === 0 ? 'bg-purple-50' : 'bg-pink-50');
+        }
+
+        function sortByDeadlineManually() {
+            sortMagazinesByDeadline();
+            updateAllViews();
+            showNotification('¡Revistas ordenadas por fecha de cierre!', 'success');
+        }
+
+        function handleCardClick(id) {
+            const mag = magazines.find(m => m.id === id);
+            if (!mag) return;
+            if (isCampaignExpired(mag.deadline)) {
+                showNotification(`Esta campaña de ${mag.name} ya finalizó. ¡Pronto la nueva edición!`, 'error');
+                return;
+            }
+            if (!mag.link || mag.link === '#') {
+                showNotification(`Configura el enlace de "${mag.name}" en Gestionar Kiosco.`, 'error');
+                return;
+            }
+            window.open(mag.link, '_blank');
+        }
+
+        function handleCoverError(img) {
+            if (!img) return;
+            const parent = img.parentElement;
+            if (parent) {
+                parent.className = 'cover-container flex items-center justify-center bg-orange-100/60 rounded-t-[32px] text-orange-400 font-bold';
+                parent.innerHTML = '<i class="fas fa-book-open text-3xl"></i>';
+            }
+        }
+
+        const grid = document.getElementById('magazineGrid');
+        const emptyState = document.getElementById('emptyState');
+        const adminPanel = document.getElementById('adminPanel');
+        const toggleAdminBtn = document.getElementById('toggleAdminBtn');
+        const closeAdminBtn = document.getElementById('closeAdminBtn');
+        const addMagazineForm = document.getElementById('addMagazineForm');
+        
+        const adminPhone = document.getElementById('adminPhone');
+        const adminPaymentText = document.getElementById('adminPaymentText');
+        const adminPaymentFlex = document.getElementById('adminPaymentFlex');
+        const adminPassSettings = document.getElementById('adminPassSettings');
+        const paymentTextDisplay = document.getElementById('paymentTextDisplay');
+        const paymentFlexDisplay = document.getElementById('paymentFlexDisplay');
+
+        const confirmModal = document.getElementById('confirmModal');
+        const confirmTargetName = document.getElementById('confirmTargetName');
+        const acceptConfirmBtn = document.getElementById('acceptConfirmBtn');
+        const cancelConfirmBtn = document.getElementById('cancelConfirmBtn');
+
+        const helpFloatingBtn = document.getElementById('helpFloatingBtn');
+        const helpModalWindow = document.getElementById('helpModalWindow');
+        const closeHelpModalBtn = document.getElementById('closeHelpModalBtn');
+
+        const passwordModal = document.getElementById('passwordModal');
+        const adminPasswordInput = document.getElementById('adminPasswordInput');
+        const cancelPasswordBtn = document.getElementById('cancelPasswordBtn');
+        const submitPasswordBtn = document.getElementById('submitPasswordBtn');
+        const helpInstallTriggerBox = document.getElementById('helpInstallTriggerBox');
+        const pwaTriggerBtnInner = document.getElementById('pwaTriggerBtnInner');
+
+        function renderCatalog() {
             grid.innerHTML = '';
             if (!magazines || magazines.length === 0) {
                 grid.classList.add('hidden');
-                if (emptyState) emptyState.classList.remove('hidden');
+                emptyState.classList.remove('hidden');
                 return;
             }
             grid.classList.remove('hidden');
-            if (emptyState) emptyState.classList.add('hidden');
+            emptyState.classList.add('hidden');
             
             grid.innerHTML = magazines.map(mag => {
                 const expired = isCampaignExpired(mag.deadline);
@@ -540,7 +874,7 @@
                 let newStickerHtml = (pending && !expired) ? `<div class="absolute top-2.5 left-2.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-extrabold text-[9px] px-2.5 py-1 rounded-full shadow-md tracking-wider border border-white/40 flex items-center gap-1 z-20 animate-badge"><i class="fas fa-sparkles text-yellow-200"></i> NUEVA</div>` : "";
                 
                 const coverElement = mag.cover 
-                    ? `<div class="cover-container rounded-t-[32px] shadow-inner"><img src="${mag.cover}" alt="${mag.name}" class="cover-img" onerror="this.parentElement.innerHTML='<i class=\\'fas fa-book-open text-4xl text-orange-400\\'></i>'"></div>` 
+                    ? `<div class="cover-container rounded-t-[32px] shadow-inner"><img src="${mag.cover}" alt="${mag.name}" class="cover-img" onerror="handleCoverError(this)"></div>` 
                     : `<div class="cover-container flex items-center justify-center bg-orange-100/50 rounded-t-[32px] text-orange-400 font-bold"><i class="fas fa-book-open text-4xl"></i></div>`;
 
                 return `
@@ -561,22 +895,191 @@
             }).join('');
         }
 
-        function handleCardClick(id) {
-            const mag = magazines.find(m => m.id === id);
-            if (!mag) return;
-            if (isCampaignExpired(mag.deadline)) {
-                alert(`Esta campaña de ${mag.name} ya finalizó. ¡Pronto la nueva edición!`);
-                return;
+        function renderAdminList() {
+            const adminManageList = document.getElementById('adminManageList');
+            adminManageList.innerHTML = magazines.map(mag => `
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl flex flex-col gap-3 shadow-md">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-2"><span class="text-sm font-bold text-slate-200 uppercase">${mag.name}</span><span class="text-[9px] text-slate-500 uppercase bg-slate-950 px-2 py-0.5 rounded-md">ID: ${mag.id}</span></div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <input type="text" id="link-${mag.id}" value="${mag.link === '#' ? '' : mag.link}" placeholder="Enlace catálogo" class="px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-white text-xs">
+                        <input type="text" id="date-${mag.id}" value="${mag.deadline}" placeholder="Cierre" class="px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-white text-xs">
+                        <input type="text" id="cover-${mag.id}" value="${mag.cover || ''}" placeholder="URL Portada" class="px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-white text-xs">
+                    </div>
+                    <div class="flex justify-end gap-2">
+                        <button onclick="updateCatalog(${mag.id})" class="bg-orange-500 hover:bg-orange-400 text-white px-4 py-1.5 rounded-xl text-xs font-bold shadow"><i class="fas fa-save"></i> Guardar</button>
+                        <button onclick="triggerDelete(${mag.id})" class="bg-slate-800 hover:bg-rose-500 text-rose-400 px-3 py-1.5 rounded-xl text-xs"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderSettings() {
+            paymentTextDisplay.textContent = settings.paymentText;
+            paymentFlexDisplay.textContent = settings.paymentFlex;
+            adminPhone.value = settings.phone;
+            adminPaymentText.value = settings.paymentText;
+            adminPaymentFlex.value = settings.paymentFlex;
+            adminPassSettings.value = settings.pass || 'Sol2004';
+        }
+
+        function saveContactSettings() {
+            settings.phone = adminPhone.value.trim();
+            settings.paymentText = adminPaymentText.value.trim();
+            settings.paymentFlex = adminPaymentFlex.value.trim();
+            settings.pass = adminPassSettings.value.trim() || 'Sol2004';
+            renderSettings();
+            showNotification('¡Ajustes guardados!', 'success');
+        }
+
+        addMagazineForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            magazines.push({
+                id: Date.now(),
+                name: document.getElementById('newMagName').value.trim(),
+                link: document.getElementById('newMagLink').value.trim() || '#',
+                deadline: document.getElementById('newMagDate').value.trim() || 'NUEVA',
+                cover: document.getElementById('newMagCover').value.trim(),
+                bg: 'bg-purple-50'
+            });
+            sortMagazinesByDeadline();
+            updateAllViews();
+            addMagazineForm.reset();
+            showNotification('¡Catálogo agregado!', 'success');
+        });
+
+        function updateCatalog(id) {
+            const m = magazines.find(x => x.id === id);
+            if (m) {
+                m.link = document.getElementById(`link-${id}`).value.trim() || '#';
+                m.deadline = document.getElementById(`date-${id}`).value.trim() || 'NUEVA';
+                m.cover = document.getElementById(`cover-${id}`).value.trim();
+                sortMagazinesByDeadline();
+                updateAllViews();
+                showNotification('¡Actualizado con éxito!', 'success');
             }
-            if (!mag.link || mag.link === '#') {
-                alert(`El enlace de "${mag.name}" aún no se ha configurado.`);
-                return;
+        }
+
+        function triggerDelete(id) {
+            const m = magazines.find(x => x.id === id);
+            if (!m) return;
+            deleteTargetId = id;
+            confirmTargetName.textContent = m.name;
+            confirmModal.classList.remove('hidden');
+            setTimeout(() => confirmModal.classList.remove('opacity-0'), 10);
+        }
+
+        cancelConfirmBtn.addEventListener('click', () => {
+            confirmModal.classList.add('opacity-0');
+            setTimeout(() => { confirmModal.classList.add('hidden'); deleteTargetId = null; }, 200);
+        });
+
+        acceptConfirmBtn.addEventListener('click', () => {
+            if (deleteTargetId !== null) {
+                magazines = magazines.filter(m => m.id !== deleteTargetId);
+                sortMagazinesByDeadline();
+                updateAllViews();
+                showNotification('Eliminado correctamente', 'info');
+                confirmModal.classList.add('opacity-0');
+                setTimeout(() => { confirmModal.classList.add('hidden'); deleteTargetId = null; }, 200);
             }
-            window.open(mag.link, '_blank');
+        });
+
+        function updateAllViews() { renderCatalog(); renderAdminList(); renderSettings(); updateShareLabels(); }
+
+        function showNotification(msg, type = 'info') {
+            const t = document.createElement('div');
+            t.className = `fixed bottom-4 right-4 bg-slate-900 border-l-4 ${type==='success'?'border-emerald-500':type==='error'?'border-rose-500':'border-sky-500'} text-white px-5 py-3 rounded-2xl shadow-xl z-[70] text-xs`;
+            t.innerHTML = msg;
+            document.body.appendChild(t);
+            setTimeout(() => { t.classList.add('opacity-0'); setTimeout(() => t.remove(), 350); }, 3000);
+        }
+
+        function showHelpAnswer(id) {
+            const ans = document.getElementById(`answer-${id}`);
+            if (ans) ans.classList.toggle('hidden');
+        }
+
+        helpFloatingBtn.addEventListener('click', () => { helpModalWindow.classList.remove('hidden'); setTimeout(() => helpModalWindow.classList.remove('opacity-0'), 10); });
+        closeHelpModalBtn.addEventListener('click', () => { helpModalWindow.classList.add('opacity-0'); setTimeout(() => helpModalWindow.classList.add('hidden'), 300); });
+        toggleAdminBtn.addEventListener('click', () => { passwordModal.classList.remove('hidden'); setTimeout(() => passwordModal.classList.remove('opacity-0'), 10); adminPasswordInput.focus(); });
+        cancelPasswordBtn.addEventListener('click', () => { passwordModal.classList.add('opacity-0'); adminPasswordInput.value = ''; setTimeout(() => passwordModal.classList.add('hidden'), 200); });
+        
+        submitPasswordBtn.addEventListener('click', () => {
+            if (adminPasswordInput.value.trim() === (settings.pass || 'Sol2004')) {
+                passwordModal.classList.add('opacity-0');
+                setTimeout(() => passwordModal.classList.add('hidden'), 200);
+                adminPasswordInput.value = '';
+                adminPanel.classList.remove('hidden');
+                setTimeout(() => adminPanel.classList.remove('opacity-0'), 10);
+            } else {
+                showNotification('Contraseña incorrecta', 'error');
+                adminPasswordInput.value = '';
+                adminPasswordInput.focus();
+            }
+        });
+        adminPasswordInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') submitPasswordBtn.click(); });
+        closeAdminBtn.addEventListener('click', () => { adminPanel.classList.add('opacity-0'); setTimeout(() => adminPanel.classList.add('hidden'), 300); });
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            if (helpInstallTriggerBox) helpInstallTriggerBox.classList.remove('hidden');
+        });
+
+        async function handleInstallAction() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') showNotification('¡Gracias por instalar!', 'success');
+                deferredPrompt = null;
+            } else {
+                showNotification('Usa el menú de tu navegador y elige "Instalar aplicación"', 'info');
+            }
+        }
+
+        const pwaTriggerBtn = document.getElementById('pwaTriggerBtn');
+        if (pwaTriggerBtn) pwaTriggerBtn.addEventListener('click', handleInstallAction);
+        if (pwaTriggerBtnInner) pwaTriggerBtnInner.addEventListener('click', handleInstallAction);
+        document.getElementById('closeInstallBannerBtn').addEventListener('click', () => { document.getElementById('pwaInstallBanner').style.display = 'none'; });
+
+        function downloadUpdatedTemplate() {
+            try {
+                let docClone = document.documentElement.cloneNode(true);
+                const cloneAdmin = docClone.querySelector('#adminPanel');
+                if (cloneAdmin) cloneAdmin.className = "hidden fixed top-0 left-0 w-full h-full bg-slate-950/80 backdrop-blur-sm text-white z-50 flex items-center justify-center p-2 opacity-0";
+                const clonePass = docClone.querySelector('#passwordModal');
+                if (clonePass) clonePass.className = "hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-[90] flex items-center justify-center p-4 opacity-0";
+                let html = "<!DOCTYPE html>\n" + docClone.outerHTML;
+                html = html.replace(/const defaultMagazines\s*=\s*\[[\s\S]*?\];/g, `const defaultMagazines = ${JSON.stringify(magazines, null, 12)};`);
+                html = html.replace(/const defaultSettings\s*=\s*\{[\s\S]*?\};/g, `const defaultSettings = ${JSON.stringify(settings, null, 12)};`);
+                const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'index.html';
+                link.click();
+                showNotification('¡Descargado con éxito!', 'success');
+            } catch (e) {
+                showNotification('Ocurrió un error al generar plantilla', 'error');
+            }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            renderCatalog();
+            sortMagazinesByDeadline();
+            updateAllViews();
+            detectOSAndGuide();
+
+            if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(() => {});
+            if (typeof Sortable !== 'undefined') {
+                Sortable.create(grid, {
+                    animation: 200, delay: 150, delayOnTouchOnly: true, ghostClass: 'opacity-40',
+                    onEnd: function () {
+                        magazines = Array.from(grid.children).map(c => magazines.find(m => m.id === parseInt(c.dataset.id)));
+                        magazines.forEach((m, i) => m.bg = i % 2 === 0 ? 'bg-purple-50' : 'bg-pink-50');
+                        renderCatalog();
+                        showNotification('¡Orden manual guardado!', 'success');
+                    }
+                });
+            }
         });
     </script>
 </body>
